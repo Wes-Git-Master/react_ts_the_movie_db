@@ -1,13 +1,11 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios, {AxiosError} from 'axios';
-
-const apiKEY = '645e762cf37226e58463117ce9c44f05';
-const baseURL = 'https://api.themoviedb.org/3';
+import {apiKEY, baseURL} from "../../constants/urls";
+import {authService} from "../../services/auth.service";
 
 //===========================================================================================================
 
 interface AuthState {
-    user:any
     requestToken: string;
     sessionId: string;
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
@@ -15,7 +13,6 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-    user: null,
     requestToken: '',
     sessionId: '',
     status: 'idle',
@@ -28,34 +25,28 @@ const getRequestToken = createAsyncThunk(
     'auth/getRequestToken',
     async (_, thunkAPI) => {
         try {
-            const response = await axios.get(`${baseURL}/authentication/token/new?api_key=${apiKEY}`);
-            return thunkAPI.fulfillWithValue(response.data.request_token);
+            const response = await authService.getToken();
+            return thunkAPI.fulfillWithValue(response.request_token);
 
         } catch (e) {
             const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error)
         }
     });
-
-//===========================================================================================================
 
 const createSession = createAsyncThunk(
     'auth/createSession',
     async (requestToken: string, thunkAPI) => {
         try {
-            const response = await axios.post(`${baseURL}/authentication/session/new?api_key=${apiKEY}`, {
-                request_token: requestToken,
-            });
-            return thunkAPI.fulfillWithValue(response.data.session_id);
+            const response = await authService.createNewSession(requestToken)
+            return thunkAPI.fulfillWithValue(response.sessionId);
         } catch (e) {
             const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error)
         }
     });
 
-//===========================================================================================================
-
-export const registerUser = createAsyncThunk(   //  todo
+export const registerUser = createAsyncThunk(
     'auth/registerUser',
     async (userData: { username: string; password: string }, thunkAPI) => {
         try {
@@ -90,6 +81,7 @@ const authSlice = createSlice({
                 state.status = 'failed';
                 state.error = action.error.message || null;
             })
+            //===========================================================================================================
             .addCase(createSession.pending, (state) => {
                 state.status = 'loading';
             })
@@ -101,11 +93,12 @@ const authSlice = createSlice({
                 state.status = 'failed';
                 state.error = action.error.message || null;
             })
+            //===========================================================================================================
             .addCase(registerUser.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(registerUser.fulfilled, (state) => {
-                state.user = 'succeeded';
+                state.status = 'succeeded';
             })
             .addCase(registerUser.rejected, (state, action) => {
                 state.status = 'failed';

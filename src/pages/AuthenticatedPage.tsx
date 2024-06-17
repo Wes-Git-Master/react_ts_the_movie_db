@@ -15,6 +15,7 @@ const AuthenticatedPage: FC = () => {
     const status = useAppSelector(state => state.auth.status)
 
     useEffect(() => {
+
         const axiosSessionId = async () => {
             const params = new URLSearchParams(location.search);
             const requestToken = params.get('request_token');
@@ -23,7 +24,7 @@ const AuthenticatedPage: FC = () => {
             }
         };
 
-        axiosSessionId();
+        axiosSessionId().then();
     }, [location, dispatch]);
 
     useEffect(() => {
