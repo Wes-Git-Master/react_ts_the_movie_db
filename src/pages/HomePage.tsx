@@ -1,14 +1,14 @@
 import React from 'react';
 
-const LoginPage = () => {
+const HomePage = () => {
 
     return (
         <div>
 
-            LoginPage
+            HomePage
 
         </div>
     );
 };
 
-export {LoginPage};
+export {HomePage};

@@ -7,6 +7,7 @@ const baseURL = 'https://api.themoviedb.org/3';
 //===========================================================================================================
 
 interface AuthState {
+    user:any
     requestToken: string;
     sessionId: string;
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
@@ -14,6 +15,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
+    user: null,
     requestToken: '',
     sessionId: '',
     status: 'idle',
@@ -53,6 +55,24 @@ const createSession = createAsyncThunk(
 
 //===========================================================================================================
 
+export const registerUser = createAsyncThunk(   //  todo
+    'auth/registerUser',
+    async (userData: { username: string; password: string }, thunkAPI) => {
+        try {
+            const response = await axios.post(`${baseURL}/register`, {
+                username: userData.username,
+                password: userData.password,
+                api_key: apiKEY
+            });
+            return thunkAPI.fulfillWithValue(response.data);
+        } catch (e) {
+            const error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error)
+        }
+    });
+
+//===========================================================================================================
+
 const authSlice = createSlice({
     name: 'auth',
     initialState,
@@ -80,7 +100,17 @@ const authSlice = createSlice({
             .addCase(createSession.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message || null;
-            });
+            })
+            .addCase(registerUser.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(registerUser.fulfilled, (state) => {
+                state.user = 'succeeded';
+            })
+            .addCase(registerUser.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message || null;
+            })
     },
 });
 
@@ -88,5 +118,6 @@ const authSlice = createSlice({
 export const authActions = {
     ...authSlice,
     getRequestToken,
-    createSession
+    createSession,
+    registerUser
 }
