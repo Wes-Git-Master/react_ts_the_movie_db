@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MoviesList_Component = () => {
+const MoviesListComponent = () => {
 
     return (
         <div>
@@ -10,4 +10,4 @@ const MoviesList_Component = () => {
     );
 };
 
-export {MoviesList_Component};
+export {MoviesListComponent};

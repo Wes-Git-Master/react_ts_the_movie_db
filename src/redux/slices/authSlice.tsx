@@ -28,6 +28,7 @@ const getRequestToken = createAsyncThunk(
         try {
             const response = await axios.get(`${baseURL}/authentication/token/new?api_key=${apiKEY}`);
             return thunkAPI.fulfillWithValue(response.data.request_token);
+
         } catch (e) {
             const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error)

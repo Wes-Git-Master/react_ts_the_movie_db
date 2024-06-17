@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MoviesListCard_Component = () => {
+const MoviesListCardComponent = () => {
 
     return (
         <div>
@@ -10,4 +10,4 @@ const MoviesListCard_Component = () => {
     );
 };
 
-export {MoviesListCard_Component};
+export {MoviesListCardComponent};
