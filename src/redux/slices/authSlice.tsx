@@ -1,18 +1,17 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import axios, {AxiosError} from 'axios';
-import {apiKEY, baseURL} from "../../constants/urls";
-import {authService} from "../../services/auth.service";
+import {AxiosError} from 'axios';
+import {authApiService} from "../../services/auth.api.service";
 
 //===========================================================================================================
 
-interface AuthState {
+interface IAuthState {
     requestToken: string;
     sessionId: string;
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
     error: string | null;
 }
 
-const initialState: AuthState = {
+const initialState: IAuthState = {
     requestToken: '',
     sessionId: '',
     status: 'idle',
@@ -25,7 +24,7 @@ const getRequestToken = createAsyncThunk(
     'auth/getRequestToken',
     async (_, thunkAPI) => {
         try {
-            const response = await authService.getToken();
+            const response = await authApiService.getToken();
             return thunkAPI.fulfillWithValue(response.request_token);
 
         } catch (e) {
@@ -38,24 +37,8 @@ const createSession = createAsyncThunk(
     'auth/createSession',
     async (requestToken: string, thunkAPI) => {
         try {
-            const response = await authService.createNewSession(requestToken)
+            const response = await authApiService.createNewSession(requestToken)
             return thunkAPI.fulfillWithValue(response.sessionId);
-        } catch (e) {
-            const error = e as AxiosError;
-            return thunkAPI.rejectWithValue(error)
-        }
-    });
-
-export const registerUser = createAsyncThunk(
-    'auth/registerUser',
-    async (userData: { username: string; password: string }, thunkAPI) => {
-        try {
-            const response = await axios.post(`${baseURL}/register`, {
-                username: userData.username,
-                password: userData.password,
-                api_key: apiKEY
-            });
-            return thunkAPI.fulfillWithValue(response.data);
         } catch (e) {
             const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error)
@@ -93,17 +76,7 @@ const authSlice = createSlice({
                 state.status = 'failed';
                 state.error = action.error.message || null;
             })
-            //===========================================================================================================
-            .addCase(registerUser.pending, (state) => {
-                state.status = 'loading';
-            })
-            .addCase(registerUser.fulfilled, (state) => {
-                state.status = 'succeeded';
-            })
-            .addCase(registerUser.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message || null;
-            })
+
     },
 });
 
@@ -112,5 +85,4 @@ export const authActions = {
     ...authSlice,
     getRequestToken,
     createSession,
-    registerUser
 }

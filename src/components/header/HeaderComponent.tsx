@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {NavLink} from "react-router-dom";
-import {useAppSelector} from "../redux/Store";
+import {useAppSelector} from "../../redux/Store";
+import css from "../../components/header/header.module.css"
 
 const HeaderComponent = () => {
 
-    const {status} = useAppSelector(state => state.auth);
+    //===========================================================================================================
 
-    const [islogin, setLogin] = useState<boolean>(false);
+    const {status} = useAppSelector(state => state.auth);
+    const [is_login, setLogin] = useState<boolean>(false);
 
     useEffect(() => {
-        // Перевірка стану аутентифікації при завантаженні компонента
+
         const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
         setLogin(loggedIn);
 
@@ -22,14 +24,19 @@ const HeaderComponent = () => {
         }
     }, [status]);
 
+    //===========================================================================================================
+
     return (
+
         <div>
             {
-                islogin ?
-                    <NavLink to={''}/> :
-                    <div>
+                is_login ? <div className={css.header}>
+                        <NavLink to={'home'}>HOME</NavLink>
+                        <NavLink to={'moviesList'}>MOVIES</NavLink>
+                    </div>
+
+                    : <div>
                         <NavLink to={'/login'}>login</NavLink>
-                        <hr/>
                     </div>
             }
         </div>

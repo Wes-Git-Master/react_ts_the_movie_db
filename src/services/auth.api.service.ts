@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
     headers: {"Content-Type": "application/json"}
 });
 
-const authService = {
+const authApiService = {
     getToken: async (): Promise<IAuth> => {
         const response
             = await axiosInstance.get<IAuth>(`${baseURL}/authentication/token/new?api_key=${apiKEY}`);
@@ -22,4 +22,4 @@ const authService = {
 }
 
 
-export {authService}
+export {authApiService}
