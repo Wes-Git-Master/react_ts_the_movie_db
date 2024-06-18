@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {NavLink} from "react-router-dom";
 import {useAppSelector} from "../../redux/Store";
-import css from "../../components/header/header.module.css"
+import css from "../../styles/header.module.css"
 
 const HeaderComponent = () => {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSearchParams} from 'react-router-dom';
-import css from "./pagination.page.numbers.module.css"
+import css from "../../styles/pagination.page.numbers.module.css"
 
 interface PaginationProps {
     currentPage: string;

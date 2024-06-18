@@ -3,7 +3,7 @@ import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../redux/Store";
 import {authActions} from "../redux/slices/authSlice";
 import {BeatLoader} from "react-spinners";
-import css from "./authenticated.page.module.css"
+import css from "../styles/authenticated.page.module.css"
 import {useLoading} from "../hooks/useLoading";
 
 

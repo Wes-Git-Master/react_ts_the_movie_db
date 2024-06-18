@@ -1,6 +1,6 @@
 import React, {FC, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
-import css from "./authenticate.module.css"
+import css from "../styles/authenticate.module.css"
 
 const AuthenticatePage: FC = () => {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {MoviesListComponent} from "../components/movies/MoviesListComponent";
-import css from "./movie.page.module.css"
+import css from "../styles/movie.page.module.css"
 
 
 const MoviePage = () => {

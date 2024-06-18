@@ -5,7 +5,7 @@ import {useAppDispatch, useAppSelector} from "../redux/Store";
 import {authActions} from "../redux/slices/authSlice";
 import {BeatLoader} from "react-spinners";
 import {useLoading} from "../hooks/useLoading";
-import css from "./login.page.module.css"
+import css from "../styles/login.page.module.css"
 
 
 const LoginPage: FC = () => {

@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {IMovie} from "../../interfaces/IMovie";
 import {posterBaseURL} from "../../constants/urls";
-import css from "./poster.module.css"
+import css from "../../styles/poster.module.css"
 
 interface IProps {
     movie: IMovie
