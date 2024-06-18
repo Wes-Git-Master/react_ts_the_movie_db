@@ -15,10 +15,8 @@ const LoginPage: FC = () => {
     const dispatch = useAppDispatch();
     const {requestToken, status}
         = useAppSelector(state => state.auth)
-
     const {handleSubmit} = useForm();
     const navigate = useNavigate();
-
     const loading = useLoading(status);
 
     useEffect(() => {
@@ -38,7 +36,7 @@ const LoginPage: FC = () => {
             <h1>Login</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {
-                    status === 'loading' ?  <div><BeatLoader color="red" loading={loading} size={10}/></div>
+                    status === 'loading' ? <div><BeatLoader color="red" loading={loading} size={10}/></div>
                         : <button type="submit">Login with TMDb</button>
                 }
             </form>
