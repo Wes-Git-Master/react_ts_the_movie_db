@@ -7,12 +7,12 @@ import {IMovie} from "../../interfaces/IMovie";
 
 interface IMoviesState {
     movies: IMovie[],
-    error: string | null
+    error: string | null,
 }
 
 const initialState: IMoviesState = {
     movies: [],
-    error: null
+    error: null,
 }
 
 //===========================================================================================================
@@ -37,6 +37,7 @@ const moviesSlice = createSlice({
     reducers: {},
     extraReducers: builder =>
         builder
+
             .addCase(getAllMovies.fulfilled, (state, action) => {
                 state.movies = action.payload
             })

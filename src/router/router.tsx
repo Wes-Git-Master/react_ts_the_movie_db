@@ -4,7 +4,7 @@ import {HomePage} from "../pages/HomePage";
 import {LoginPage} from "../pages/LoginPage";
 import {AuthenticatedPage} from "../pages/AuthenticatedPage";
 import {AuthenticatePage} from "../pages/AuthenticatePage";
-import {MoviesListComponent} from "../components/movies/MoviesListComponent";
+import {MoviePage} from "../pages/MoviePage";
 
 const routes: RouteObject[] = [
     {
@@ -15,7 +15,7 @@ const routes: RouteObject[] = [
             {path: 'login', element: <LoginPage/>},
             {path: 'authenticated', element: <AuthenticatedPage/>},
             {path: 'authenticate/:requestToken', element: <AuthenticatePage/>},
-            {path: 'moviesList', element: <MoviesListComponent/>}
+            {path: 'moviesList', element: <MoviePage/>}
         ]
     }
 ];

@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import {IMovie} from "../../interfaces/IMovie";
 import {posterBaseURL} from "../../constants/urls";
+import css from "./poster.module.css"
 
 interface IProps {
     movie: IMovie
@@ -14,7 +15,7 @@ const PosterPreviewComponent: FC<IProps> = ({movie}) => {
 
     return (
         <div>
-            <img src={poster} alt=""/>
+            <img src={poster} alt="" className={css.poster}/>
         </div>
     );
 };

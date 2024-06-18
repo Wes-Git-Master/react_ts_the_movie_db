@@ -29,7 +29,7 @@ const AuthenticatedPage: FC = () => {
 
     useEffect(() => {
         if (status === 'succeeded') {
-            navigate('/');
+            navigate('/moviesList');
         }
     }, [status, navigate]);
 
