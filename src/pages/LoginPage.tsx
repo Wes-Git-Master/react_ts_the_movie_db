@@ -3,6 +3,9 @@ import {useForm} from 'react-hook-form';
 import {useNavigate} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from "../redux/Store";
 import {authActions} from "../redux/slices/authSlice";
+import {BeatLoader} from "react-spinners";
+import {useLoading} from "../hooks/useLoading";
+import css from "./login.page.module.css"
 
 
 const LoginPage: FC = () => {
@@ -15,6 +18,8 @@ const LoginPage: FC = () => {
 
     const {handleSubmit} = useForm();
     const navigate = useNavigate();
+
+    const loading = useLoading(status);
 
     useEffect(() => {
         if (status !== 'succeeded') {
@@ -29,14 +34,13 @@ const LoginPage: FC = () => {
     //===========================================================================================================
 
     return (
-        <div>
+        <div className={css.login_page_block}>
             <h1>Login</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
-                {status === 'loading' ? (
-                    <p>Loading...</p>
-                ) : (
-                    <button type="submit">Login with TMDb</button>
-                )}
+                {
+                    status === 'loading' ?  <div><BeatLoader color="red" loading={loading} size={10}/></div>
+                        : <button type="submit">Login with TMDb</button>
+                }
             </form>
         </div>
     );

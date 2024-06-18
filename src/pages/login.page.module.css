@@ -1,0 +1,30 @@
+.login_page_block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login_page_block h1 {
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 50px;
+}
+
+.login_page_block div {
+    margin-top: 50px;
+}
+
+.login_page_block button {
+    font-size: 20px;
+    height: 40px;
+    width: 300px;
+    background-color: #465ebd;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    transition: 0.5s;
+
+}
+
+.login_page_block button:hover {
+    background-color: white;
+    transition: 0.2s;
+}

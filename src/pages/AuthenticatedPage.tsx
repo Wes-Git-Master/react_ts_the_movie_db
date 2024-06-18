@@ -1,8 +1,10 @@
 import React, {FC, useEffect} from 'react';
-import {useLocation, useNavigate} from "react-router-dom";
-
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../redux/Store";
 import {authActions} from "../redux/slices/authSlice";
+import {BeatLoader} from "react-spinners";
+import css from "./authenticated.page.module.css"
+import {useLoading} from "../hooks/useLoading";
 
 
 const AuthenticatedPage: FC = () => {
@@ -13,6 +15,7 @@ const AuthenticatedPage: FC = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch()
     const status = useAppSelector(state => state.auth.status)
+    const loading = useLoading(status);
 
     useEffect(() => {
 
@@ -36,8 +39,13 @@ const AuthenticatedPage: FC = () => {
     //===========================================================================================================
 
     return (
-        <div>
-            <h1>Loading...</h1>
+
+        <div className={css.authenticated_page}>
+            <h3>Please</h3>
+            <div>
+                <BeatLoader color="red" loading={loading} size={10}/>
+            </div>
+            <NavLink to={'/login'}>login</NavLink>
         </div>
     )
 };

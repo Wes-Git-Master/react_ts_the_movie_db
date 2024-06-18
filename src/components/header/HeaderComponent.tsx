@@ -30,14 +30,10 @@ const HeaderComponent = () => {
 
         <div>
             {
-                is_login ? <div className={css.header}>
-                        <NavLink to={'home'}>HOME</NavLink>
-                        <NavLink to={'moviesList'}>MOVIES</NavLink>
-                    </div>
-
-                    : <div>
-                        <NavLink to={'/login'}>login</NavLink>
-                    </div>
+                is_login && <div className={css.header}>
+                    <NavLink to={'home'}>HOME</NavLink>
+                    <NavLink to={'moviesList'}>MOVIES</NavLink>
+                </div>
             }
         </div>
     );
