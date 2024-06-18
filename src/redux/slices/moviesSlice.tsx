@@ -8,15 +8,15 @@ import {IMoviesAxiosResponse} from "../../interfaces/IMoviesAxiosResponse";
 
 interface IMoviesState {
     movies: IMovie[],
-    error: string | null,
     status: 'idle' | 'loading' | 'succeeded' | 'failed',
+    error: string | null,
     totalPages: number
 }
 
 const initialState: IMoviesState = {
     movies: [],
-    error: null,
     status: 'idle',
+    error: null,
     totalPages: 1
 }
 
