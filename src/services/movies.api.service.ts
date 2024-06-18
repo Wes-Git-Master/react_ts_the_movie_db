@@ -18,8 +18,8 @@ axiosInstance.interceptors.request.use(req => {
 
 const moviesApiService = {
 
-    getAllMovies: async (): Promise<IMoviesAxiosResponse> => {
-        const response = await axiosInstance.get<IMoviesAxiosResponse>(`${baseURL}/discover/movie?page=1`);
+    getAllMovies: async (page:string): Promise<IMoviesAxiosResponse> => {
+        const response = await axiosInstance.get<IMoviesAxiosResponse>(`${baseURL}/discover/movie`,{params:{page}});
         return response.data
     }
 }

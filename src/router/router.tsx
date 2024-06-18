@@ -10,7 +10,7 @@ const routes: RouteObject[] = [
     {
         path: '', element: <MainLayout/>,
         children: [
-            {index: true, element: <HomePage/>},
+            {index: true, element: <LoginPage/>},
             {path: 'home', element: <HomePage/>},
             {path: 'login', element: <LoginPage/>},
             {path: 'authenticated', element: <AuthenticatedPage/>},

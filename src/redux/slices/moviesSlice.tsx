@@ -2,27 +2,32 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {moviesApiService} from "../../services/movies.api.service";
 import {AxiosError} from "axios";
 import {IMovie} from "../../interfaces/IMovie";
+import {IMoviesAxiosResponse} from "../../interfaces/IMoviesAxiosResponse";
 
 //===========================================================================================================
 
 interface IMoviesState {
     movies: IMovie[],
     error: string | null,
+    status: 'idle' | 'loading' | 'succeeded' | 'failed',
+    totalPages: number
 }
 
 const initialState: IMoviesState = {
     movies: [],
     error: null,
+    status: 'idle',
+    totalPages: 1
 }
 
 //===========================================================================================================
 
 const getAllMovies = createAsyncThunk(
     'movies/getAllMovies',
-    async (_, thunkAPI) => {
+    async (page:string, thunkAPI) => {
         try {
-            const response = await moviesApiService.getAllMovies();
-            return thunkAPI.fulfillWithValue(response.results)
+            const response:IMoviesAxiosResponse = await moviesApiService.getAllMovies(page);
+            return thunkAPI.fulfillWithValue(response)
         } catch (e) {
             const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error)
@@ -37,11 +42,17 @@ const moviesSlice = createSlice({
     reducers: {},
     extraReducers: builder =>
         builder
-
+            .addCase(getAllMovies.pending, (state) => {
+                state.status = 'loading';
+            })
             .addCase(getAllMovies.fulfilled, (state, action) => {
-                state.movies = action.payload
+                state.status = 'succeeded'
+                state.movies = action.payload.results
+                state.totalPages = action.payload.total_pages
+
             })
             .addCase(getAllMovies.rejected, (state, action) => {
+                state.status = 'failed'
                 state.error = action.error.message || null
             })
 })

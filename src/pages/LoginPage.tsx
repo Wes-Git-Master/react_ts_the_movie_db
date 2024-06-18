@@ -17,7 +17,7 @@ const LoginPage: FC = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (status === 'idle') {
+        if (status !== 'succeeded') {
             dispatch(authActions.getRequestToken())
         }
     }, [status, dispatch]);
