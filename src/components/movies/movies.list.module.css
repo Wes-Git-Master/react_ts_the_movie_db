@@ -1,7 +1,8 @@
 .movieList {
     display: grid;
     grid-template-columns: repeat(4, 0fr);
-    gap: 25px;
+    gap: 20px;
+    margin: 25px 0 0 0;
 }
 
 .pagination_block {
