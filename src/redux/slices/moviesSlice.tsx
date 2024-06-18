@@ -7,13 +7,11 @@ import {IMovie} from "../../interfaces/IMovie";
 
 interface IMoviesState {
     movies: IMovie[],
-    poster: string | null
     error: string | null
 }
 
 const initialState: IMoviesState = {
     movies: [],
-    poster: null,
     error: null
 }
 
@@ -33,19 +31,6 @@ const getAllMovies = createAsyncThunk(
 
 //===========================================================================================================
 
-const getMoviePoster = createAsyncThunk(
-    'movies/getMoviePoster',
-    async (poster_path: string, thunkAPI) => {
-        try {
-            const poster = await moviesApiService.getPoster(poster_path);
-            return thunkAPI.fulfillWithValue(poster)
-        } catch (e) {
-            const error = e as AxiosError;
-            return thunkAPI.rejectWithValue(error)
-        }
-    })
-
-
 const moviesSlice = createSlice({
     name: 'movies',
     initialState,
@@ -58,13 +43,9 @@ const moviesSlice = createSlice({
             .addCase(getAllMovies.rejected, (state, action) => {
                 state.error = action.error.message || null
             })
-            .addCase(getMoviePoster.fulfilled, (state, action) => {
-                state.poster = action.payload
-            })
 })
 
 export const moviesActions = {
     ...moviesSlice,
     getAllMovies,
-    getMoviePoster
 }
