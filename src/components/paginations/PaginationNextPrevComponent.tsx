@@ -6,7 +6,7 @@ interface IPaginationProps {
     totalPages: number;
 }
 
-const PaginationComponent: FC<IPaginationProps> = ({currentPage, totalPages}) => {
+const PaginationNextPrevComponent: FC<IPaginationProps> = ({currentPage, totalPages}) => {
 
     //===========================================================================================================
 
@@ -43,4 +43,4 @@ const PaginationComponent: FC<IPaginationProps> = ({currentPage, totalPages}) =>
     );
 };
 
-export {PaginationComponent};
+export {PaginationNextPrevComponent};
