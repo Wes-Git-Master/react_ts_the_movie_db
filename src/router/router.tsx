@@ -5,7 +5,7 @@ import {LoginPage} from "../pages/LoginPage";
 import {AuthenticatedPage} from "../pages/AuthenticatedPage";
 import {AuthenticatePage} from "../pages/AuthenticatePage";
 import {MoviePage} from "../pages/MoviePage";
-import {MovieInfoComponent} from "../components/MovieInfoComponent";
+import {MovieInfoComponent} from "../components/movies/movie_info/MovieInfoComponent";
 
 const routes: RouteObject[] = [
     {

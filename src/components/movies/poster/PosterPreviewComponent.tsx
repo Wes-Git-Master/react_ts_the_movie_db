@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
-import {IMovie} from "../../interfaces/IMovie";
-import {posterBaseURL} from "../../constants/urls";
-import css from "../../styles/poster.module.css"
+import {IMovie} from "../../../interfaces/IMovie";
+import {posterBaseURL} from "../../../constants/urls";
+import css from "../../../styles/poster.module.css"
 import {useNavigate} from "react-router-dom";
 
 interface IProps {

@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {MoviesListCardComponent} from "./MoviesListCardComponent";
-import {useAppDispatch, useAppSelector} from "../../redux/Store";
-import {moviesActions} from "../../redux/slices/moviesSlice";
-import css from "../../styles/movies.list.module.css"
+import {useAppDispatch, useAppSelector} from "../../../redux/Store";
+import {moviesActions} from "../../../redux/slices/moviesSlice";
+import css from "../../../styles/movies.list.module.css"
 import {useSearchParams} from "react-router-dom";
-import PaginationPagesComponent from "../paginations/PaginationPageNumbersComponent";
-import {useLoading} from "../../hooks/useLoading";
+import PaginationPagesComponent from "../../paginations/PaginationPageNumbersComponent";
+import {useLoading} from "../../../hooks/useLoading";
 import {BeatLoader} from "react-spinners";
-import GenresDropdownComponent from "./genres/GenresDropdownComponent";
+import GenresDropdownComponent from "../genres/GenresDropdownComponent";
 
 
 const MoviesListComponent = () => {

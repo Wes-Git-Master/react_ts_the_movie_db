@@ -18,9 +18,14 @@ axiosInstance.interceptors.request.use(req => {
 
 const moviesApiService = {
 
-    getAllMovies: async (page: string,genreId?: string): Promise<IMoviesAxiosResponse> => {
+    getAllMovies: async (page: string, genreId?: string): Promise<IMoviesAxiosResponse> => {
         const response
-            = await axiosInstance.get<IMoviesAxiosResponse>(`${baseURL}/discover/movie`, {params: {page,with_genres: genreId}});
+            = await axiosInstance.get<IMoviesAxiosResponse>(`${baseURL}/discover/movie`, {
+            params: {
+                page,
+                with_genres: genreId
+            }
+        });
         return response.data
     },
     getGenres: async (): Promise<IGenresAxiosResponse> => {
@@ -29,7 +34,8 @@ const moviesApiService = {
         return response.data;
     },
     getSingleMovieDetails: async (movieId: string): Promise<IMovie> => {
-        const response = await axiosInstance.get<IMovie>(`${baseURL}/movie/${movieId}`);
+        const response
+            = await axiosInstance.get<IMovie>(`${baseURL}/movie/${movieId}`);
         return response.data;
     },
 }
