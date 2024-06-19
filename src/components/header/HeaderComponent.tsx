@@ -18,7 +18,8 @@ const HeaderComponent = () => {
         if (status === "succeeded") {
             setLogin(true);
             localStorage.setItem('isLoggedIn', 'true');
-        } else if (status === "failed") {
+        }
+        if (status === "failed") {
             setLogin(false);
             localStorage.removeItem('isLoggedIn');
         }
@@ -27,14 +28,9 @@ const HeaderComponent = () => {
     //===========================================================================================================
 
     return (
-
-        <div>
-            {
-                is_login && <div className={css.header}>
-                    <NavLink to={'home'}>HOME</NavLink>
-                    <NavLink to={'moviesList'}>MOVIES</NavLink>
-                </div>
-            }
+        <div className={css.header}>
+            <div><NavLink to={'home'}>HOME</NavLink></div>
+            {is_login && <div><NavLink to={'moviesList'}>MOVIES</NavLink></div>}
         </div>
     );
 };

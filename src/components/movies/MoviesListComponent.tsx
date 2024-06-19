@@ -7,6 +7,7 @@ import {useSearchParams} from "react-router-dom";
 import PaginationPagesComponent from "../paginations/PaginationPageNumbersComponent";
 import {useLoading} from "../../hooks/useLoading";
 import {BeatLoader} from "react-spinners";
+import GenresDropdownComponent from "./genres/GenresDropdownComponent";
 
 
 const MoviesListComponent = () => {
@@ -17,18 +18,21 @@ const MoviesListComponent = () => {
     const {movies, totalPages, status} = useAppSelector(state => state.movies);
     const [searchParams] = useSearchParams();
     const page = searchParams.get('page') || '1'
+    const genreId = searchParams.get('genre') || ''
     const loading = useLoading(status);
 
     useEffect(() => {
 
-        dispatch(moviesActions.getAllMovies(page))
+        dispatch(moviesActions.getAllMovies({page,genreId}))
 
-    }, [dispatch, page]);
+    }, [dispatch, page,genreId]);
 
     //===========================================================================================================
 
     return (
         <div>
+            {status !== 'loading' ?  <GenresDropdownComponent/> : ""}
+
             <div className={css.movieList}>
                 {status === 'loading' ? (<div className={css.load}>
                         <p>Loading</p>

@@ -4,6 +4,11 @@
     align-items: center;
 }
 
+.authenticated_page p {
+    font-size: 40px;
+    color: white;
+}
+
 .authenticated_page a {
     text-decoration: none;
     margin-top: 10px;

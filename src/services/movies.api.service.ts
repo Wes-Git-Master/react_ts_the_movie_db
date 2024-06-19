@@ -1,7 +1,7 @@
 import axios from "axios";
 import {accessToken, baseURL} from "../constants/urls";
 import {IMoviesAxiosResponse} from "../interfaces/IMoviesAxiosResponse";
-import {IGenresResponse} from "../interfaces/IGenresResponse";
+import {IGenresAxiosResponse} from "../interfaces/IGenresAxiosResponse";
 
 const axiosInstance = axios.create({
     baseURL: baseURL,
@@ -17,12 +17,14 @@ axiosInstance.interceptors.request.use(req => {
 
 const moviesApiService = {
 
-    getAllMovies: async (page: string): Promise<IMoviesAxiosResponse> => {
-        const response = await axiosInstance.get<IMoviesAxiosResponse>(`${baseURL}/discover/movie`, {params: {page}});
+    getAllMovies: async (page: string,genreId?: string): Promise<IMoviesAxiosResponse> => {
+        const response
+            = await axiosInstance.get<IMoviesAxiosResponse>(`${baseURL}/discover/movie`, {params: {page,with_genres: genreId}});
         return response.data
     },
-    getGenres: async (): Promise<IGenresResponse> => {
-        const response = await axiosInstance.get<IGenresResponse>(`${baseURL}/genre/movie/list`);
+    getGenres: async (): Promise<IGenresAxiosResponse> => {
+        const response
+            = await axiosInstance.get<IGenresAxiosResponse>(`${baseURL}/genre/movie/list`);
         return response.data;
     }
 }

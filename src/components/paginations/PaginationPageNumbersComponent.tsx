@@ -17,7 +17,8 @@ const PaginationComponent: React.FC<PaginationProps> = ({currentPage, totalPages
     const currentGroup = Math.ceil(currentPageNumber / pagesPerGroup);
 
     const handlePageChange = (page: number) => {
-        setSearchParams({page: page.toString()});
+        const genre = searchParams.get('genre') || ''
+        setSearchParams({page: page.toString(),genre});
     };
 
     const generatePageNumbers = () => {

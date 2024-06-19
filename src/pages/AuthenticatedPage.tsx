@@ -1,5 +1,5 @@
 import React, {FC, useEffect} from 'react';
-import {NavLink, useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../redux/Store";
 import {authActions} from "../redux/slices/authSlice";
 import {BeatLoader} from "react-spinners";
@@ -34,18 +34,20 @@ const AuthenticatedPage: FC = () => {
         if (status === 'succeeded') {
             navigate('/moviesList');
         }
+        if (status === 'failed') {
+            navigate('/login')
+        }
     }, [status, navigate]);
 
     //===========================================================================================================
 
     return (
-
         <div className={css.authenticated_page}>
-            <h3>Please</h3>
-            <div>
-                <BeatLoader color="red" loading={loading} size={10}/>
-            </div>
-            <NavLink to={'/login'}>login</NavLink>
+            {status === 'loading' ?
+                <div>
+                    <p>Loading</p>
+                    <BeatLoader color="red" loading={loading} size={16}/>
+                </div> : ''}
         </div>
     )
 };

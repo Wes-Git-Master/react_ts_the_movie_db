@@ -10,12 +10,12 @@ const routes: RouteObject[] = [
     {
         path: '', element: <MainLayout/>,
         children: [
-            {index: true, element: <LoginPage/>},
+            {index: true, element: <HomePage/>},
             {path: 'home', element: <HomePage/>},
             {path: 'login', element: <LoginPage/>},
             {path: 'authenticated', element: <AuthenticatedPage/>},
             {path: 'authenticate/:requestToken', element: <AuthenticatePage/>},
-            {path: 'moviesList', element: <MoviePage/>}
+            {path: 'moviesList', element: <MoviePage/>},
         ]
     }
 ];

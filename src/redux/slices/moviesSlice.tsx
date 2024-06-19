@@ -24,9 +24,9 @@ const initialState: IMoviesState = {
 
 const getAllMovies = createAsyncThunk(
     'movies/getAllMovies',
-    async (page:string, thunkAPI) => {
+    async ({ page, genreId }: { page: string, genreId?: string }, thunkAPI) => {
         try {
-            const response:IMoviesAxiosResponse = await moviesApiService.getAllMovies(page);
+            const response:IMoviesAxiosResponse = await moviesApiService.getAllMovies(page,genreId);
             return thunkAPI.fulfillWithValue(response)
         } catch (e) {
             const error = e as AxiosError;
