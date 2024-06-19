@@ -5,6 +5,7 @@ import {LoginPage} from "../pages/LoginPage";
 import {AuthenticatedPage} from "../pages/AuthenticatedPage";
 import {AuthenticatePage} from "../pages/AuthenticatePage";
 import {MoviePage} from "../pages/MoviePage";
+import {MovieInfoComponent} from "../components/MovieInfoComponent";
 
 const routes: RouteObject[] = [
     {
@@ -16,6 +17,7 @@ const routes: RouteObject[] = [
             {path: 'authenticated', element: <AuthenticatedPage/>},
             {path: 'authenticate/:requestToken', element: <AuthenticatePage/>},
             {path: 'moviesList', element: <MoviePage/>},
+            {path: 'movieInfo/:movieId', element: <MovieInfoComponent/>}
         ]
     }
 ];

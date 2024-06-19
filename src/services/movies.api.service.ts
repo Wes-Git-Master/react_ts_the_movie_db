@@ -2,6 +2,7 @@ import axios from "axios";
 import {accessToken, baseURL} from "../constants/urls";
 import {IMoviesAxiosResponse} from "../interfaces/IMoviesAxiosResponse";
 import {IGenresAxiosResponse} from "../interfaces/IGenresAxiosResponse";
+import {IMovie} from "../interfaces/IMovie";
 
 const axiosInstance = axios.create({
     baseURL: baseURL,
@@ -26,7 +27,11 @@ const moviesApiService = {
         const response
             = await axiosInstance.get<IGenresAxiosResponse>(`${baseURL}/genre/movie/list`);
         return response.data;
-    }
+    },
+    getSingleMovieDetails: async (movieId: string): Promise<IMovie> => {
+        const response = await axiosInstance.get<IMovie>(`${baseURL}/movie/${movieId}`);
+        return response.data;
+    },
 }
 
 export {moviesApiService}

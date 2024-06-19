@@ -3,3 +3,6 @@
     margin-top: 0;
     border-radius: 10px;
 }
+.posterContainer {
+    cursor: pointer;
+}
