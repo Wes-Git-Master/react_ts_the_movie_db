@@ -18,10 +18,12 @@
     margin: 25px 0 0 25px;
     cursor: pointer;
     border-radius: 4px;
+    transition: background-color 0.6s;
 }
 
 .backButton:hover {
     background-color: #106ed3;
+    transition: 1s;
 }
 
 .movieInfoContainer h1 {
@@ -29,9 +31,9 @@
 }
 
 .movieInfoContainer img {
-    height: 725px;
+    height: 650px;
     border-radius: 8px;
-    margin: 10px 0 40px 0;
+    margin: 18px 0 40px 0;
 }
 
 .movie_overview {

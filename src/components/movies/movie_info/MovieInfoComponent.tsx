@@ -4,6 +4,7 @@ import {useAppDispatch, useAppSelector} from "../../../redux/Store";
 import {moviesActions} from "../../../redux/slices/moviesSlice";
 import {posterBaseURL} from "../../../constants/urls";
 import css from "../../../styles/movie.info.module.css"
+import {IMovie} from "../../../interfaces/IMovie";
 
 
 const MovieInfoComponent: FC = () => {
