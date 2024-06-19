@@ -1,13 +1,14 @@
 .dropdown_Container {
-    margin: 20px 0;
+    margin: 20px 0 0 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    color: #f8f9fa;
+    color: rgba(134, 192, 102, 0.69);
+    /*font-size: 26px;*/
 }
 
 label {
-    margin-bottom: 8px;
+    margin-bottom: 14px;
     font-weight: bold;
 }
 
@@ -16,13 +17,15 @@ select {
     border-radius: 4px;
     border: 1px solid #343a40;
     font-size: 16px;
-    color: #f8f9fa;
-    background-color: #343a40;
+    color: #d98a8a;
+    background-color: rgb(31, 30, 30);
     outline: none;
-    transition: border-color 0.3s, background-color 0.3s;
+    transition: border-color 0.1s, background-color 0.3s;
+    cursor: pointer;
+
 }
 
 select:focus {
-    border-color: #007bff;
-    background-color: #495057;
+    border-color: rgba(0, 123, 255, 0.42);
+    background-color: #222425;
 }

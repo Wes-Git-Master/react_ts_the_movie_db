@@ -28,15 +28,12 @@ const GenresDropdownComponent: React.FC = () => {
     };
 
     return (
-        <div  className={css.dropdown_Container}>
+        <div className={css.dropdown_Container}>
             <label htmlFor="genres">Choose a genre:</label>
             <select id="genres" value={selectedGenre} onChange={handleGenreChange}>
                 <option value="">All Genres</option>
-                {genres.map((genre) => (
-                    <option key={genre.id} value={genre.id.toString()}>
-                        {genre.name}
-                    </option>
-                ))}
+                {genres.map((genre) =>
+                    (<option key={genre.id} value={genre.id.toString()}>{genre.name}</option>))}
             </select>
         </div>
     );
