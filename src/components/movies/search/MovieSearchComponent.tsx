@@ -11,7 +11,6 @@ const MovieSearchComponent = () => {
     const initQuery = searchParams.get('query') || ''
     const [query, setQuery] = useState(initQuery)
 
-
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setQuery(event.target.value)
     }
