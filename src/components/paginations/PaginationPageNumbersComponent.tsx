@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {useSearchParams} from 'react-router-dom';
 import css from "../../styles/pagination.page.numbers.module.css"
 
@@ -7,7 +7,7 @@ interface PaginationProps {
     totalPages: number;
 }
 
-const PaginationComponent: React.FC<PaginationProps> = ({currentPage, totalPages}) => {
+const PaginationPageNumbersComponent: FC<PaginationProps> = ({currentPage, totalPages}) => {
 
     //===========================================================================================================
 
@@ -18,7 +18,7 @@ const PaginationComponent: React.FC<PaginationProps> = ({currentPage, totalPages
 
     const handlePageChange = (page: number) => {
         const genre = searchParams.get('genre') || ''
-        setSearchParams({page: page.toString(),genre});
+        setSearchParams({page: page.toString(), genre});
     };
 
     const generatePageNumbers = () => {
@@ -60,4 +60,4 @@ const PaginationComponent: React.FC<PaginationProps> = ({currentPage, totalPages
     );
 };
 
-export default PaginationComponent;
+export {PaginationPageNumbersComponent};

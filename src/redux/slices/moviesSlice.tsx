@@ -10,16 +10,16 @@ interface IMoviesState {
     movies: IMovie[],
     selectedMovie: IMovie | null,
     status: 'idle' | 'loading' | 'succeeded' | 'failed',
-    error: string | null,
-    totalPages: number
+    totalPages: number,
+    error: string | null
 }
 
 const initialState: IMoviesState = {
     movies: [],
     selectedMovie: null,
     status: 'idle',
-    error: null,
-    totalPages: 1
+    totalPages: 1,
+    error: null
 }
 
 //===========================================================================================================
@@ -70,6 +70,7 @@ const moviesSlice = createSlice({
                 state.status = 'failed'
                 state.error = action.error.message || null
             })
+            //===========================================================================================================
             .addCase(getMovieDetails.pending, (state) => {
                 state.status = 'loading'
             })

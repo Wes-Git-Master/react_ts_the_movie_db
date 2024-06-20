@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
+import {IGenre} from "../../../interfaces/IGenre";
 import {useSearchParams} from 'react-router-dom';
 import {moviesApiService} from "../../../services/movies.api.service";
-import {IGenre} from "../../../interfaces/IGenre";
 import css from "../../../styles/genre.dropdown.module.css"
 
 
-const GenresDropdownComponent: React.FC = () => {
+const GenresDropdownComponent: FC = () => {
 
     //===========================================================================================================
 
@@ -39,4 +39,4 @@ const GenresDropdownComponent: React.FC = () => {
     );
 };
 
-export default GenresDropdownComponent;
+export {GenresDropdownComponent};

@@ -1,10 +1,10 @@
 import React, {FC, useEffect} from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../redux/Store";
+import {useAppDispatch, useAppSelector} from "../hooks/reduxHooks/redux.type.hooks";
 import {authActions} from "../redux/slices/authSlice";
 import {BeatLoader} from "react-spinners";
-import css from "../styles/authenticated.page.module.css"
 import {useLoading} from "../hooks/useLoading";
+import css from "../styles/authenticated.page.module.css"
 
 
 const AuthenticatedPage: FC = () => {

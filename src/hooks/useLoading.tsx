@@ -12,7 +12,7 @@ const useLoading = (status: string) => {
             //     setLoading(false);
             // }, 3000);
         }
-    }, [loading]);
+    }, [loading, status]);
 
     return loading
 }

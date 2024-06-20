@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {NavLink} from "react-router-dom";
-import {useAppSelector} from "../../redux/Store";
+import {useAppSelector} from "../../hooks/reduxHooks/redux.type.hooks";
 import css from "../../styles/header.module.css"
+import {ThemeSwitcherComponent} from "../theme/ThemeSwitcherComponent";
 
 const HeaderComponent = () => {
 
@@ -29,8 +30,11 @@ const HeaderComponent = () => {
 
     return (
         <div className={css.header}>
-            <div><NavLink to={'home'}>HOME</NavLink></div>
-            {is_login && <div><NavLink to={'moviesList'}>MOVIES</NavLink></div>}
+            <div className={css.header_links_block}>
+                <div className={css.home}><NavLink to={'home'}>HOME</NavLink></div>
+                {is_login && <div className={css.movie_list}><NavLink to={'moviesList'}>MOVIES</NavLink></div>}
+            </div>
+            <ThemeSwitcherComponent/>
         </div>
     );
 };

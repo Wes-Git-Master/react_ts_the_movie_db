@@ -1,22 +1,19 @@
-import React, {FC, useEffect, useState} from 'react';
-// import css from "../../styles/theme.switcher.module.css";
+import React, {FC} from 'react';
+import {useTheme} from "../../hooks/useTheme";
+import css from "../../styles/theme.switcher.module.css";
 
-const ThemeSwitcherComponent:FC = () => {
-    const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
-    useEffect(() => {
-        document.documentElement.setAttribute('data-theme', theme);
-    }, [theme]);
+const ThemeSwitcherComponent: FC = () => {
 
-    const toggleTheme = () => {
-        setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-    };
+    const {theme, toggleTheme} = useTheme();
 
     return (
-        <button onClick={toggleTheme} >
-            {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
-        </button>
+        <>
+            <button onClick={toggleTheme} className={css.themeSwitcher}>
+                {theme === 'light' ? 'Dark' : 'Light'}
+            </button>
+        </>
     );
 };
 
-export { ThemeSwitcherComponent };
+export {ThemeSwitcherComponent};

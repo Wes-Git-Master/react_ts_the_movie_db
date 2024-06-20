@@ -1,10 +1,9 @@
 import React, {FC, useEffect} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
-import {useAppDispatch, useAppSelector} from "../../../redux/Store";
+import {useAppDispatch, useAppSelector} from "../../../hooks/reduxHooks/redux.type.hooks";
 import {moviesActions} from "../../../redux/slices/moviesSlice";
 import {posterBaseURL} from "../../../constants/urls";
 import css from "../../../styles/movie.info.module.css"
-import {IMovie} from "../../../interfaces/IMovie";
 
 
 const MovieInfoComponent: FC = () => {
@@ -43,7 +42,6 @@ const MovieInfoComponent: FC = () => {
                 <div className={css.movie_overview}>
                     <p>{movie.overview}</p>
                 </div>
-
             </div>
         </div>
     );

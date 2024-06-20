@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {MoviesListCardComponent} from "./MoviesListCardComponent";
-import {useAppDispatch, useAppSelector} from "../../../redux/Store";
-import {moviesActions} from "../../../redux/slices/moviesSlice";
-import css from "../../../styles/movies.list.module.css"
+import {useAppDispatch, useAppSelector} from "../../../hooks/reduxHooks/redux.type.hooks";
 import {useSearchParams} from "react-router-dom";
-import PaginationPagesComponent from "../../paginations/PaginationPageNumbersComponent";
 import {useLoading} from "../../../hooks/useLoading";
+import {moviesActions} from "../../../redux/slices/moviesSlice";
+import {GenresDropdownComponent} from "../genres/GenresDropdownComponent";
 import {BeatLoader} from "react-spinners";
-import GenresDropdownComponent from "../genres/GenresDropdownComponent";
+import {MoviesListCardComponent} from "./MoviesListCardComponent";
+import {PaginationPageNumbersComponent} from "../../paginations/PaginationPageNumbersComponent";
+import css from "../../../styles/movies.list.module.css"
 
 
 const MoviesListComponent = () => {
@@ -62,7 +62,7 @@ const MoviesListComponent = () => {
 
             <div className={css.pagination_block}>
                 {status !== 'loading' &&
-                    <div><PaginationPagesComponent currentPage={page} totalPages={totalPages}/></div>}
+                    <div><PaginationPageNumbersComponent currentPage={page} totalPages={totalPages}/></div>}
             </div>
 
             {showScrollToTop && (
