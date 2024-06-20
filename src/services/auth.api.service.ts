@@ -1,5 +1,5 @@
 import axios from "axios";
-import {apiKEY, baseURL} from "../constants/urls";
+import {accessToken, apiKEY, baseURL} from "../constants/urls";
 import {IAuth} from "../interfaces/IAuth";
 
 
@@ -8,6 +8,10 @@ const axiosInstance = axios.create({
     headers: {"Content-Type": "application/json"}
 });
 
+axiosInstance.interceptors.request.use(req => {
+    req.headers.Authorization = `Bearer ${accessToken}`
+    return req
+})
 //===========================================================================================================
 
 const authApiService = {

@@ -1,5 +1,5 @@
 import axios from "axios";
-import {accessToken, baseURL} from "../constants/urls";
+import {baseURL} from "../constants/urls";
 import {IMoviesAxiosResponse} from "../interfaces/IMoviesAxiosResponse";
 import {IGenresAxiosResponse} from "../interfaces/IGenresAxiosResponse";
 import {IMovie} from "../interfaces/IMovie";
@@ -8,13 +8,6 @@ const axiosInstance = axios.create({
     baseURL: baseURL,
     headers: {"Content-Type": "application/json"}
 });
-
-axiosInstance.interceptors.request.use(req => {
-    req.headers.Authorization = `Bearer ${accessToken}`
-    return req
-})
-
-//===========================================================================================================
 
 const moviesApiService = {
 
@@ -38,6 +31,15 @@ const moviesApiService = {
             = await axiosInstance.get<IMovie>(`${baseURL}/movie/${movieId}`);
         return response.data;
     },
+    searchMovies: async (query: string, page: string): Promise<IMoviesAxiosResponse> => {
+        const response = await axiosInstance.get<IMoviesAxiosResponse>(`${baseURL}/search/movie`, {
+            params: {
+                query,
+                page
+            }
+        });
+        return response.data;
+    }
 }
 
 export {moviesApiService}

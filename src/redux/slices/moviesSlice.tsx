@@ -28,7 +28,7 @@ const getAllMovies = createAsyncThunk(
     'movies/getAllMovies',
     async ({page, genreId}: { page: string, genreId?: string }, thunkAPI) => {
         try {
-            const response: IMoviesAxiosResponse = await moviesApiService.getAllMovies(page, genreId);
+            const response = await moviesApiService.getAllMovies(page, genreId);
             return thunkAPI.fulfillWithValue(response)
         } catch (e) {
             const error = e as AxiosError;
@@ -41,11 +41,23 @@ const getMovieDetails = createAsyncThunk(
     async (movieId: string, thunkAPI) => {
         try {
             const response = await moviesApiService.getSingleMovieDetails(movieId);
-            console.log(response)
-            return response
+            return thunkAPI.fulfillWithValue(response)
         } catch (e) {
             const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error)
+        }
+    }
+);
+
+const searchMovies = createAsyncThunk(
+    'movies/searchMovies',
+    async ({query, page}: { query: string, page: string }, thunkAPI) => {
+        try {
+            const response = await moviesApiService.searchMovies(query, page);
+            return thunkAPI.fulfillWithValue(response);
+        } catch (e) {
+            const error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error);
         }
     }
 );
@@ -82,10 +94,25 @@ const moviesSlice = createSlice({
                 state.status = 'failed';
                 state.error = action.error.message || 'Failed to show movie details';
             })
+            //===========================================================================================================
+            .addCase(searchMovies.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(searchMovies.fulfilled, (state, action: PayloadAction<IMoviesAxiosResponse>) => {
+                state.status = 'succeeded';
+                state.movies = action.payload.results;
+                state.totalPages = action.payload.total_pages;
+                state.error = null;
+            })
+            .addCase(searchMovies.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message || 'Failed to search movies';
+            })
 })
 
 export const moviesActions = {
     ...moviesSlice,
     getAllMovies,
-    getMovieDetails
+    getMovieDetails,
+    searchMovies
 }
