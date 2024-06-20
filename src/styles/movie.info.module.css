@@ -1,12 +1,15 @@
+.movie_info{
+    display: flex;
+}
 .movieInfoContainer {
     display: flex;
-    align-items: center;
-    margin: 0 0 0 150px;
+    margin: 25px 0 0 150px;
 }
 
 .backButton {
     height: 33px;
     width: 75px;
+    margin: 20px 0 0 20px;
     background-color: rgba(0, 123, 255, 0.21);
     border: none;
     color: white;
@@ -14,8 +17,6 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 25px 0 0 25px;
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.6s;
@@ -27,26 +28,22 @@
 }
 
 .movieInfoContainer h1 {
-    color: #d32a2a;
+    color: #e71c1c;
 }
 
 .movieInfoContainer img {
-    height: 650px;
+    height: 475px;
     border-radius: 8px;
     margin: 18px 0 40px 0;
 }
 
-.movie_overview {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.movie_info_block {
+    margin: 75px 0 0 75px;
 }
 
 .movieInfoContainer p {
     color: #c7b0b0;
-    margin: 0 0 350px 50px;
-    font-size: 30px;
-    width: 42vw;
+    font-size: 20px;
 }
 
 

@@ -17,10 +17,21 @@
     color: rgb(236, 236, 236);
 }
 
+.home a:hover {
+    color: #cc2626;
+    transition: color 0.3s;
+}
+
 .movie_list a {
     margin: 0 700px 0 120px;
     text-decoration: none;
     font-size: 26px;
-    color: rgb(166, 30, 30);
+    color: rgb(130, 137, 178);
+    transition: color 75ms;
+}
+
+.movie_list a:hover {
+    color: #cc2626;
+    transition: color 0.3s;
 }
 

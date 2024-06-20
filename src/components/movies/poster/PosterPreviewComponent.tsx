@@ -23,7 +23,6 @@ const PosterPreviewComponent: FC<IProps> = ({movie}) => {
 
     return (
         <div onClick={handlePosterClick} className={css.posterContainer}>
-
             <img src={poster} alt="" className={css.poster}/>
         </div>
     );

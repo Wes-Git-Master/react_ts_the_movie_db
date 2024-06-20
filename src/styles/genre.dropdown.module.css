@@ -1,15 +1,14 @@
 .dropdown_Container {
-    margin: 20px 0 0 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     color: rgba(134, 192, 102, 0.69);
-    /*font-size: 26px;*/
+
 }
 
 label {
-    margin-bottom: 14px;
-    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 25px;
 }
 
 select {
