@@ -1,0 +1,22 @@
+.themeSwitcher{
+    height: 36px;
+    width: 90px;
+    font-size: 18px;
+    border-radius: 20px;
+    background-color: rgb(12, 12, 12);
+    color: rgba(205, 215, 197, 0.93);
+    transition: background-color 0.3s;
+}
+.themeSwitcher:hover{
+    transition: background-color 0.3s;
+    background-color: rgba(86, 119, 69, 0.19);
+    cursor: pointer;
+}
+
+.themeSwitcher:active{
+    background-color: rgba(0, 0, 0, 0.51);
+    color: #ffffff;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+

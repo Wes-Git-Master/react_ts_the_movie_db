@@ -1,0 +1,54 @@
+.pagination_block button {
+    margin: 40px 0 0 0;
+}
+
+.button_prev {
+    background-color: rgba(9, 16, 24, 0.44);
+    color: rgba(225, 14, 14, 0.87);
+    font-size: 19px;
+    height: 33px;
+    width: 75px;
+    transition: 0.6s;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button_prev:hover {
+    background-color: rgba(10, 10, 10, 0.72);
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.button_pages {
+    color: rgba(248, 248, 248, 0.74);
+    background-color: rgba(0, 0, 0, 0.25);
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    transition: 0.1s;
+}
+
+.button_pages:hover {
+    background-color: rgba(77, 166, 58, 0.11);
+    transition: 0.4s;
+    border: 2px rgba(255, 255, 255, 0.22) solid;
+}
+
+
+.button_next {
+    background-color: rgba(9, 16, 24, 0.44);
+    color: rgba(225, 14, 14, 0.87);
+    height: 33px;
+    width: 75px;
+    font-size: 19px;
+    transition: 0.6s;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button_next:hover {
+    background-color: rgba(10, 10, 10, 0.72);
+    font-size: 15px;
+    transition: 0.3s;
+}

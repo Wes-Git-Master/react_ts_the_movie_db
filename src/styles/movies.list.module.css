@@ -1,0 +1,49 @@
+.movieList {
+    display: grid;
+    grid-template-columns: repeat(4, 0fr);
+    gap: 20px;
+    margin: 25px 0 0 0;
+}
+
+.load {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.load p {
+    font-size: 40px;
+    color: white;
+}
+
+.pagination_block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scrollToTop {
+    position: fixed;
+    bottom: 21px;
+    right: 48px;
+    width: 55px;
+    height: 55px;
+    background-color: rgba(0, 123, 255, 0.21);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    cursor: pointer;
+    transition: background-color 0.8s;
+}
+
+.scrollToTop:hover {
+    background-color: #106ed3;
+
+    transition: 1s;
+
+}
+
