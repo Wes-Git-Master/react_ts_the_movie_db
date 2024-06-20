@@ -1,0 +1,37 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 90px;
+    background-color: rgb(0, 0, 0);
+}
+
+.header_links_block {
+    display: flex;
+    align-items: baseline;
+}
+
+.home a {
+    text-decoration: none;
+    font-size: 38px;
+    color: rgb(236, 236, 236);
+}
+
+.home a:hover {
+    color: #cc2626;
+    transition: color 0.3s;
+}
+
+.movie_list a {
+    margin: 0 700px 0 120px;
+    text-decoration: none;
+    font-size: 26px;
+    color: rgb(130, 137, 178);
+    transition: color 75ms;
+}
+
+.movie_list a:hover {
+    color: #cc2626;
+    transition: color 0.3s;
+}
+
