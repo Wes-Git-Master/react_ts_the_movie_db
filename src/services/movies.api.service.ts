@@ -38,6 +38,15 @@ const moviesApiService = {
             = await axiosInstance.get<IMovie>(`${baseURL}/movie/${movieId}`);
         return response.data;
     },
+    searchMovies: async (query: string, page: string): Promise<IMoviesAxiosResponse> => {
+        const response = await axiosInstance.get<IMoviesAxiosResponse>(`${baseURL}/search/movie`, {
+            params: {
+                query,
+                page
+            }
+        });
+        return response.data;
+    }
 }
 
 export {moviesApiService}

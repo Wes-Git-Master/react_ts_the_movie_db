@@ -8,6 +8,7 @@ import {BeatLoader} from "react-spinners";
 import {MoviesListCardComponent} from "./MoviesListCardComponent";
 import {PaginationPageNumbersComponent} from "../../paginations/PaginationPageNumbersComponent";
 import css from "../../../styles/movies.list.module.css"
+import {MovieSearchComponent} from "../search/MovieSearchComponent";
 
 
 const MoviesListComponent = () => {
@@ -19,14 +20,18 @@ const MoviesListComponent = () => {
     const [searchParams] = useSearchParams();
     const page = searchParams.get('page') || '1'
     const genreId = searchParams.get('genre') || ''
+    const query = searchParams.get('query') || '';
     const loading = useLoading(status);
     const [showScrollToTop, setShowScrollToTop] = useState(false);
 
     useEffect(() => {
 
-        dispatch(moviesActions.getAllMovies({page, genreId}))
-
-    }, [dispatch, page, genreId]);
+        if (query) {
+            dispatch(moviesActions.searchMovies({query, page}))
+        } else {
+            dispatch(moviesActions.getAllMovies({page, genreId}))
+        }
+    }, [dispatch, page, genreId, query]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -51,7 +56,11 @@ const MoviesListComponent = () => {
 
     return (
         <div>
-            {status !== 'loading' ? <GenresDropdownComponent/> : ""}
+            {status !== 'loading' ? (
+                <div>
+                    <GenresDropdownComponent/>
+                    <MovieSearchComponent/>
+                </div>) : ""}
 
             <div className={css.movieList}>
                 {status === 'loading' ? (<div className={css.load}>

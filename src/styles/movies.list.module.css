@@ -1,3 +1,9 @@
+.genre_search_block {
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: space-between;*/
+}
+
 .movieList {
     display: grid;
     grid-template-columns: repeat(4, 0fr);
@@ -42,8 +48,42 @@
 
 .scrollToTop:hover {
     background-color: #106ed3;
-
     transition: 1s;
+}
 
+/************************************************/
+
+.searchContainer {
+    margin: 0 0 50px;
+    text-align: center;
+}
+
+.searchContainer input {
+    width: 20%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    transition: 3s;
+}
+
+.searchContainer input:focus {
+    transition: 1s;
+    width: 37%;
+}
+
+.searchContainer button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+.searchContainer button:hover {
+    background-color: #0056b3;
 }
 

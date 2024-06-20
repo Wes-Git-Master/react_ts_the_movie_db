@@ -2,7 +2,6 @@ import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {moviesApiService} from "../../services/movies.api.service";
 import {AxiosError} from "axios";
 import {IMovie} from "../../interfaces/IMovie";
-import {IMoviesAxiosResponse} from "../../interfaces/IMoviesAxiosResponse";
 
 //===========================================================================================================
 
@@ -28,8 +27,8 @@ const getAllMovies = createAsyncThunk(
     'movies/getAllMovies',
     async ({page, genreId}: { page: string, genreId?: string }, thunkAPI) => {
         try {
-            const response: IMoviesAxiosResponse = await moviesApiService.getAllMovies(page, genreId);
-            return thunkAPI.fulfillWithValue(response)
+            const movies = await moviesApiService.getAllMovies(page, genreId);
+            return thunkAPI.fulfillWithValue(movies)
         } catch (e) {
             const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error)
@@ -40,15 +39,25 @@ const getMovieDetails = createAsyncThunk(
     'movies/getMovieDetails',
     async (movieId: string, thunkAPI) => {
         try {
-            const response = await moviesApiService.getSingleMovieDetails(movieId);
-            console.log(response)
-            return response
+            const movie = await moviesApiService.getSingleMovieDetails(movieId);
+            return thunkAPI.fulfillWithValue(movie)
         } catch (e) {
             const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error)
         }
-    }
-);
+    })
+
+const searchMovies = createAsyncThunk(
+    'movies/searchMovies',
+    async ({query, page}: { query: string, page: string }, thunkAPI) => {
+        try {
+            const movieBySearch = await moviesApiService.searchMovies(query, page);
+            return thunkAPI.fulfillWithValue(movieBySearch);
+        } catch (e) {
+            const error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error);
+        }
+    });
 
 //===========================================================================================================
 
@@ -79,13 +88,27 @@ const moviesSlice = createSlice({
                 state.selectedMovie = action.payload
             })
             .addCase(getMovieDetails.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message || 'Failed to show movie details';
+                state.status = 'failed'
+                state.error = action.error.message || 'Failed to show movie details'
+            })
+            //===========================================================================================================
+            .addCase(searchMovies.pending, (state) => {
+                state.status = 'loading'
+            })
+            .addCase(searchMovies.fulfilled, (state, action) => {
+                state.status = 'succeeded'
+                state.movies = action.payload.results
+                state.totalPages = action.payload.total_pages
+            })
+            .addCase(searchMovies.rejected, (state, action) => {
+                state.status = 'failed'
+                state.error = action.error.message || null
             })
 })
 
 export const moviesActions = {
     ...moviesSlice,
     getAllMovies,
-    getMovieDetails
+    getMovieDetails,
+    searchMovies
 }
