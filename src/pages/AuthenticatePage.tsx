@@ -1,10 +1,11 @@
 import React, {FC, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {getAuthUrl} from "../helpers/url.helpers";
-import {useAppSelector} from "../hooks/reduxHooks/redux.type.hooks";
+import {useAppDispatch, useAppSelector} from "../hooks/reduxHooks/redux.type.hooks";
 import {BeatLoader} from "react-spinners";
 import {useLoading} from "../hooks/useLoading";
 import css from "../styles/authenticate.module.css"
+import {authActions} from "../redux/slices/authSlice";
 
 const AuthenticatePage: FC = () => {
 
@@ -14,10 +15,16 @@ const AuthenticatePage: FC = () => {
     const authUrl = requestToken ? getAuthUrl(requestToken) : '';
     const status = useAppSelector(state => state.auth.status)
     const loading = useLoading(status);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        window.location.href = authUrl;
-    }, [authUrl]);
+        if (authUrl) {
+            window.location.href = authUrl;
+            localStorage.setItem('isLoggedIn', 'true');
+            authActions.actions.loginSuccess()
+        }
+
+    }, [authUrl, dispatch]);
 
     //===========================================================================================================
 

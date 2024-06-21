@@ -50,7 +50,11 @@ const createSession = createAsyncThunk(
 const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reducers: {},
+    reducers: {
+        loginSuccess(state) {
+            state.status = 'succeeded';
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getRequestToken.pending, (state) => {
