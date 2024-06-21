@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import {IMovie} from "../../../interfaces/IMovie";
 import {PosterPreviewComponent} from "../poster/PosterPreviewComponent";
+import {StarsRatingComponent} from "../../StarsRatingComponent";
 import css from "../../../styles/movies.list.card.module.css"
 
 interface IProps {
@@ -11,7 +12,10 @@ const MoviesListCardComponent: FC<IProps> = ({movie}) => {
 
     return (
         <div className={css.movie_card_block}>
-            <div><PosterPreviewComponent movie={movie}/></div>
+            <PosterPreviewComponent movie={movie}/>
+            <div className={css.stars_rating}>
+                <StarsRatingComponent rating={movie.vote_average}/>
+            </div>
             <p>{movie.original_title}</p>
         </div>
     );
