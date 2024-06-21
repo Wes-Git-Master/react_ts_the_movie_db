@@ -46,7 +46,7 @@ const PaginationPageNumbersComponent: FC<PaginationProps> = ({currentPage, total
                     key={page}
                     onClick={() => handlePageChange(page)}
                     disabled={page === currentPageNumber}
-                    className={css.button_pages}
+                    className={`${css.button_pages} ${page === currentPageNumber ? css.current_page : ''}`}
                 >
                     {page}
                 </button>
