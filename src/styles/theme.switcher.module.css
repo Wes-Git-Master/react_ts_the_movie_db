@@ -1,8 +1,8 @@
 .themeSwitcher{
-    height: 44px;
-    width: 95px;
+    height: 47px;
+    width: 94px;
     font-size: 19px;
-    border-radius: 20px;
+    border-radius: 22px;
     background-color: rgb(12, 12, 12);
     color: rgba(205, 215, 197, 0.93);
     transition: background-color 0.3s;
