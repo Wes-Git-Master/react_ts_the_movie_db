@@ -10,7 +10,7 @@ const ThemeSwitcherComponent: FC = () => {
     return (
         <>
             <button onClick={toggleTheme} className={css.themeSwitcher}>
-                {theme === 'light' ? 'Dark' : 'Light'}
+                {theme !== 'light' ? 'Dark' : 'Light'}
             </button>
         </>
     );

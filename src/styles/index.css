@@ -6,12 +6,12 @@ body {
     transition: background-color 1s, color 0.9s;
 }
 
-body.light {
+body.dark {
     background-color: #3a4a7c;
     color: #000000;
 }
 
-body.dark {
+body.light {
     background-color: rgba(0, 0, 0, 0.91);
     color: #ffffff;
 }
