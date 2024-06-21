@@ -1,38 +1,44 @@
-.load {
+.loading {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.load p {
+.loading p {
     font-size: 40px;
     color: white;
 }
 
-.movie_info {
-    display: flex;
+.movie_Info_Page {
+    width: 75%;
+    margin: 28px 0 0 20px ;
 }
 
-.movieInfoContainer {
+.movie_Info_Container_left {
     display: flex;
     margin: 25px 0 0 150px;
 }
 
-.movieInfoContainer h1 {
-    color: #e71c1c;
+.poster_Block {
+
 }
 
-.movieInfoContainer img {
+.poster_Block h1 {
+    color: #e71c1c;
+    font-size: 25px;
+}
+
+.poster_Block img {
     height: 475px;
     border-radius: 8px;
-    margin: 18px 0 40px 0;
+    margin: 19px 0 50px 0;
 }
 
-.movie_info_block {
-    margin: 75px 0 0 75px;
+.movie_Info_Container_right {
+    margin: 90px 0 0 75px;
 }
 
-.movieInfoContainer p {
+.movie_Info_Container_right p {
     color: #c7b0b0;
     font-size: 20px;
 }

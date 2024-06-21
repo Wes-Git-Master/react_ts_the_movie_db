@@ -9,7 +9,7 @@ import {MoviesListCardComponent} from "./MoviesListCardComponent";
 import {PaginationPageNumbersComponent} from "../../paginations/PaginationPageNumbersComponent";
 import {MovieSearchComponent} from "../../search/MovieSearchComponent";
 import css from "../../../styles/movies.list.module.css";
-import css_common from "../../../styles/css_common/back.button.module.css";
+import css_common from "../../../styles/css_common/button.module.css";
 
 const MoviesListComponent = () => {
 
@@ -83,8 +83,11 @@ const MoviesListComponent = () => {
                         ))
                     ) : (
                         <div className={css.no_results}>
-                            <button onClick={handleBackClick} className={css_common.backButton}>Back</button>
-                            <p>No results found for your search.</p>
+                            <button onClick={handleBackClick} className={css_common.generalButton}>Back</button>
+                            <div>
+                                <p>No results</p>
+                                <span><BeatLoader color="red" loading={loading} size={16}/></span>
+                            </div>
                         </div>
                     )
                 )}

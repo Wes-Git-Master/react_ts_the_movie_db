@@ -6,7 +6,7 @@ import {posterBaseURL} from "../../../constants/urls";
 import {useLoading} from "../../../hooks/useLoading";
 import {BeatLoader} from "react-spinners";
 import css from "../../../styles/movie.info.module.css"
-import css_common from "../../../styles/css_common/back.button.module.css"
+import css_common from "../../../styles/css_common/button.module.css"
 
 
 const MovieInfoComponent: FC = () => {
@@ -31,7 +31,7 @@ const MovieInfoComponent: FC = () => {
     };
 
     if (!movie) {
-        return <div className={css.load}>
+        return <div className={css.loading}>
             <p>Loading</p>
             <BeatLoader color="red" loading={loading} size={16}/>
         </div>;
@@ -40,20 +40,21 @@ const MovieInfoComponent: FC = () => {
     //===========================================================================================================
 
     return (
-        <div className={css.movie_info}>
-            <button onClick={handleBackClick} className={css_common.backButton}>Back</button>
-            <div className={css.movieInfoContainer}>
-                <div className={css.h1_poster_Block}>
+        <div className={css.movie_Info_Page}>
+            <button onClick={handleBackClick} className={css_common.generalButton}>Back</button>
+
+            <div className={css.movie_Info_Container_left}>
+                <div className={css.poster_Block}>
                     <h1>{movie.title}</h1>
                     <img src={`${posterBaseURL + movie.poster_path}`} alt={movie.title}/>
                 </div>
-                <div className={css.movie_info_block}>
 
+                <div className={css.movie_Info_Container_right}>
                     <p>Release Date - {movie.release_date}</p>
                     <p>{movie.overview}</p>
-
                 </div>
             </div>
+
         </div>
     );
 };

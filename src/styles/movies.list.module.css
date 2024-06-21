@@ -53,8 +53,17 @@
 .no_results {
     text-align: center;
     margin-top: 20px;
-    font-size: 20px;
-    color: #8c1313;
+    color: rgba(208, 36, 36, 0.89);
+}
+
+.no_results p {
+    width: 300px;
+    font-size: 30px;
+}
+
+.no_results span {
+    position: relative;
+    bottom: 4px;
 }
 
 

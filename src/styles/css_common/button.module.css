@@ -1,0 +1,17 @@
+.generalButton {
+    height: 35px;
+    width: 85px;
+    margin-left: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: rgba(0, 90, 179, 0.96);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.generalButton:hover {
+    background-color: #0974ea;
+    transition: 0.1s;
+}
