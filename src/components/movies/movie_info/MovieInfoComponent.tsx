@@ -43,7 +43,7 @@ const MovieInfoComponent: FC = () => {
         <div className={css.movie_Info_Page}>
             <button onClick={handleBackClick} className={css_common.generalButton}>Back</button>
 
-            <div className={css.movie_Info_Container_left}>
+            <div className={css.movie_Info_Container}>
                 <div className={css.poster_Block}>
                     <h1>{movie.title}</h1>
                     <img src={`${posterBaseURL + movie.poster_path}`} alt={movie.title}/>
