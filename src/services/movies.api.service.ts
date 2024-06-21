@@ -26,11 +26,6 @@ const moviesApiService = {
         });
         return response.data
     },
-    getGenres: async (): Promise<IGenresAxiosResponse> => {
-        const response
-            = await axiosInstance.get<IGenresAxiosResponse>(`${baseURL}/genre/movie/list`);
-        return response.data;
-    },
     getSingleMovieDetails: async (movieId: string): Promise<IMovie> => {
         const response
             = await axiosInstance.get<IMovie>(`${baseURL}/movie/${movieId}`);
@@ -44,7 +39,12 @@ const moviesApiService = {
             }
         });
         return response.data;
-    }
+    },
+    getGenres: async (): Promise<IGenresAxiosResponse> => {
+        const response
+            = await axiosInstance.get<IGenresAxiosResponse>(`${baseURL}/genre/movie/list`);
+        return response.data;
+    },
 }
 
 export {moviesApiService}

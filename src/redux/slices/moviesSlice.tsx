@@ -3,12 +3,15 @@ import {moviesApiService} from "../../services/movies.api.service";
 import {AxiosError} from "axios";
 import {IMovie} from "../../interfaces/IMovie";
 import {IMoviesAxiosResponse} from "../../interfaces/IMoviesAxiosResponse";
+import {IGenre} from "../../interfaces/IGenre";
 
 //===========================================================================================================
 
 interface IMoviesState {
     movies: IMovie[],
     selectedMovie: IMovie | null,
+    genres: IGenre[],
+    genresStatus: 'idle' | 'loading' | 'succeeded' | 'failed',
     status: 'idle' | 'loading' | 'succeeded' | 'failed',
     totalPages: number,
     error: string | null
@@ -18,10 +21,13 @@ interface IMoviesState {
 const initialState: IMoviesState = {
     movies: [],
     selectedMovie: null,
+    genres: [],
+    genresStatus: 'idle',
     status: 'idle',
     totalPages: 1,
     error: null
 }
+
 
 //===========================================================================================================
 
@@ -56,6 +62,19 @@ const searchMovies = createAsyncThunk(
         try {
             const response = await moviesApiService.searchMovies(query, page);
             return thunkAPI.fulfillWithValue(response);
+        } catch (e) {
+            const error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error);
+        }
+    }
+);
+
+const getGenres = createAsyncThunk(
+    'movies/getGenres',
+    async (_, thunkAPI) => {
+        try {
+            const response = await moviesApiService.getGenres();
+            return thunkAPI.fulfillWithValue(response.genres);
         } catch (e) {
             const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error);
@@ -109,11 +128,25 @@ const moviesSlice = createSlice({
                 state.status = 'failed';
                 state.error = action.error.message || 'Failed to search movies';
             })
+            //===========================================================================================================
+            .addCase(getGenres.pending, (state) => {
+                state.genresStatus = 'loading';
+            })
+            .addCase(getGenres.fulfilled, (state, action: PayloadAction<IGenre[]>) => {
+                state.genresStatus = 'succeeded';
+                state.genres = action.payload;
+                state.error = null;
+            })
+            .addCase(getGenres.rejected, (state, action) => {
+                state.genresStatus = 'failed';
+                state.error = action.error.message || 'Failed to fetch genres';
+            })
 })
 
 export const moviesActions = {
     ...moviesSlice,
     getAllMovies,
     getMovieDetails,
-    searchMovies
+    searchMovies,
+    getGenres
 }

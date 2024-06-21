@@ -17,6 +17,7 @@ const MovieInfoComponent: FC = () => {
     const dispatch = useAppDispatch();
     const movie = useAppSelector(state => state.movies.selectedMovie);
     const status = useAppSelector(state => state.movies.status);
+    const genresStatus = useAppSelector(state => state.movies.genresStatus);
     const navigate = useNavigate();
     const loading = useLoading(status);
 
@@ -24,18 +25,23 @@ const MovieInfoComponent: FC = () => {
         if (movieId) {
             dispatch(moviesActions.getMovieDetails(movieId));
         }
-    }, [dispatch, movieId]);
+        if (genresStatus === 'idle') {
+            dispatch(moviesActions.getGenres());
+        }
+    }, [dispatch, movieId, genresStatus]);
 
     const handleBackClick = () => {
         navigate(-1);
     };
 
-    if (!movie) {
+
+    if (!movie || genresStatus === 'loading') {
         return <div className={css.loading}>
             <p>Loading</p>
             <BeatLoader color="red" loading={loading} size={16}/>
         </div>;
     }
+
 
     //===========================================================================================================
 
@@ -50,8 +56,13 @@ const MovieInfoComponent: FC = () => {
                 </div>
 
                 <div className={css.movie_Info_Container_right}>
+                    Genres <div>{movie.genres?.map(genre => <div key={genre.id}>{genre.name}</div>)}</div>
                     <p>Release Date - {movie.release_date}</p>
-                    <p>{movie.overview}</p>
+                    <p>Rating - {movie.vote_average}</p>
+                    <p>Vote count - {movie.vote_count}</p>
+                    <p>Original Language - {movie.original_language}</p>
+                    <p>Popularity - {movie.popularity}</p>
+                    <p>Overview : <br/>{movie.overview}</p>
                 </div>
             </div>
 

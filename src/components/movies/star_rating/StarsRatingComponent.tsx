@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import css from '../styles/stars.rating.module.css';
+import css from '../../../styles/stars.rating.module.css';
 
 interface IMovieRatingProps {
     rating: number;
