@@ -15,23 +15,40 @@
     text-decoration: none;
     font-size: 38px;
     color: rgb(236, 236, 236);
+    border-top: rgba(22, 68, 218, 0.36) 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    transition: color 64ms;
 }
 
 .home a:hover {
-    color: #cc2626;
+    color: rgba(201, 107, 107, 0.94);
     transition: color 0.3s;
 }
+
+.home a:active {
+    transition: 0.1s;
+    color: rgb(84, 51, 51);
+}
+
 
 .movie_list a {
     margin: 0 700px 0 120px;
     text-decoration: none;
     font-size: 26px;
-    color: rgb(130, 137, 178);
-    transition: color 75ms;
+    color: rgb(163, 168, 204);
+    border-top: rgba(141, 137, 119, 0.42) 2px solid;
+    border-radius: 20px;
+    padding: 8px;
+    transition: color 64ms;
 }
 
 .movie_list a:hover {
-    color: #cc2626;
+    color: rgba(199, 199, 199, 0.94);
     transition: color 0.3s;
 }
 
+.movie_list a:active {
+    transition: 0.1s;
+    color: rgb(43, 62, 87);
+}
