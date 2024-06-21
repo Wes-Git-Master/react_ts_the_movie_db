@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../../../hooks/reduxHooks/redux.type.hooks";
-import {useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import {useLoading} from "../../../hooks/useLoading";
 import {moviesActions} from "../../../redux/slices/moviesSlice";
 import {GenresDropdownComponent} from "../genres/GenresDropdownComponent";
@@ -9,6 +9,7 @@ import {MoviesListCardComponent} from "./MoviesListCardComponent";
 import {PaginationPageNumbersComponent} from "../../paginations/PaginationPageNumbersComponent";
 import {MovieSearchComponent} from "../../search/MovieSearchComponent";
 import css from "../../../styles/movies.list.module.css";
+import css_common from "../../../styles/css_common/back.button.module.css";
 
 const MoviesListComponent = () => {
 
@@ -21,6 +22,7 @@ const MoviesListComponent = () => {
     const genreId = searchParams.get('genre') || '';
     const loading = useLoading(status);
     const [showScrollToTop, setShowScrollToTop] = useState(false);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -50,13 +52,16 @@ const MoviesListComponent = () => {
         }
     };
 
+    const handleBackClick = () => {
+        navigate(-1);
+    };
+
     //===========================================================================================================
 
     return (
         <div>
             {status !== 'loading' && totalPages > 0 && movies.length !== 0 && (
                 <div className={css.genre_search}>
-
                     <MovieSearchComponent onSearch={handleSearch}/>
                     <GenresDropdownComponent/>
                 </div>
@@ -71,7 +76,6 @@ const MoviesListComponent = () => {
                 ) : (
 
                     movies.length > 0 ? (
-
                         movies.map(movie => (
                             <div key={movie.id}>
                                 <MoviesListCardComponent movie={movie}/>
@@ -79,6 +83,7 @@ const MoviesListComponent = () => {
                         ))
                     ) : (
                         <div className={css.no_results}>
+                            <button onClick={handleBackClick} className={css_common.backButton}>Back</button>
                             <p>No results found for your search.</p>
                         </div>
                     )

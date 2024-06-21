@@ -3,9 +3,10 @@ import {useNavigate, useParams} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from "../../../hooks/reduxHooks/redux.type.hooks";
 import {moviesActions} from "../../../redux/slices/moviesSlice";
 import {posterBaseURL} from "../../../constants/urls";
-import css from "../../../styles/movie.info.module.css"
 import {useLoading} from "../../../hooks/useLoading";
 import {BeatLoader} from "react-spinners";
+import css from "../../../styles/movie.info.module.css"
+import css_common from "../../../styles/css_common/back.button.module.css"
 
 
 const MovieInfoComponent: FC = () => {
@@ -40,7 +41,7 @@ const MovieInfoComponent: FC = () => {
 
     return (
         <div className={css.movie_info}>
-            <button onClick={handleBackClick} className={css.backButton}>Back</button>
+            <button onClick={handleBackClick} className={css_common.backButton}>Back</button>
             <div className={css.movieInfoContainer}>
                 <div className={css.h1_poster_Block}>
                     <h1>{movie.title}</h1>
