@@ -3,8 +3,8 @@
 }
 
 .button_prev {
-    background-color: rgba(9, 16, 24, 0.44);
-    color: rgba(225, 14, 14, 0.87);
+    background-color: rgba(13, 22, 33, 0.16);
+    color: rgba(236, 28, 28, 0.97);
     font-size: 19px;
     height: 38px;
     width: 80px;
@@ -37,8 +37,8 @@
 
 
 .button_next {
-    background-color: rgba(9, 16, 24, 0.44);
-    color: rgba(225, 14, 14, 0.87);
+    background-color: rgba(13, 22, 33, 0.16);
+    color: rgba(236, 28, 28, 0.97);
     height: 38px;
     width: 80px;
     font-size: 19px;
