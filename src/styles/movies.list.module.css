@@ -27,11 +27,11 @@
 }
 
 .scrollToTop {
+    height: 60px;
+    width: 60px;
     position: fixed;
     bottom: 21px;
-    right: 48px;
-    width: 55px;
-    height: 55px;
+    right: 34px;
     background-color: rgba(0, 123, 255, 0.21);
     color: white;
     border: none;

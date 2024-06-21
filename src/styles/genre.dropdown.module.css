@@ -7,8 +7,8 @@
 }
 
 label {
-    margin-bottom: 15px;
-    font-size: 25px;
+    margin-bottom: 10px;
+    font-size: 26px;
 }
 
 select {
@@ -21,6 +21,7 @@ select {
     outline: none;
     transition: border-color 0.1s, background-color 0.3s;
     cursor: pointer;
+    margin: 10px 0 10px 0;
 
 }
 
