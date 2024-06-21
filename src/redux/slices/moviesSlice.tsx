@@ -14,6 +14,7 @@ interface IMoviesState {
     error: string | null
 }
 
+
 const initialState: IMoviesState = {
     movies: [],
     selectedMovie: null,

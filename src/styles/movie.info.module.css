@@ -1,6 +1,18 @@
-.movie_info{
+.load {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.load p {
+    font-size: 40px;
+    color: white;
+}
+
+.movie_info {
     display: flex;
 }
+
 .movieInfoContainer {
     display: flex;
     margin: 25px 0 0 150px;

@@ -7,8 +7,8 @@ import {GenresDropdownComponent} from "../genres/GenresDropdownComponent";
 import {BeatLoader} from "react-spinners";
 import {MoviesListCardComponent} from "./MoviesListCardComponent";
 import {PaginationPageNumbersComponent} from "../../paginations/PaginationPageNumbersComponent";
-import css from "../../../styles/movies.list.module.css";
 import {MovieSearchComponent} from "../../search/MovieSearchComponent";
+import css from "../../../styles/movies.list.module.css";
 
 const MoviesListComponent = () => {
 
@@ -50,10 +50,17 @@ const MoviesListComponent = () => {
         }
     };
 
+    //===========================================================================================================
+
     return (
         <div>
-            {!loading && <GenresDropdownComponent/>}
-            <MovieSearchComponent onSearch={handleSearch}/> {/* Передаємо функцію обробки пошуку в компоненту пошуку */}
+            {status !== 'loading' && totalPages > 0 && movies.length !== 0 && (
+                <div className={css.genre_search}>
+
+                    <MovieSearchComponent onSearch={handleSearch}/>
+                    <GenresDropdownComponent/>
+                </div>
+            )}
 
             <div className={css.movieList}>
                 {status === 'loading' ? (
@@ -62,23 +69,28 @@ const MoviesListComponent = () => {
                         <BeatLoader color="red" loading={loading} size={16}/>
                     </div>
                 ) : (
-                    movies.map(movie => (
-                        <div key={movie.id}>
-                            <MoviesListCardComponent movie={movie}/>
+
+                    movies.length > 0 ? (
+
+                        movies.map(movie => (
+                            <div key={movie.id}>
+                                <MoviesListCardComponent movie={movie}/>
+                            </div>
+                        ))
+                    ) : (
+                        <div className={css.no_results}>
+                            <p>No results found for your search.</p>
                         </div>
-                    ))
+                    )
                 )}
             </div>
 
             <div className={css.pagination_block}>
-                {!loading && (
+                {status !== 'loading' && totalPages > 0 && movies.length !== 0 && (
                     <PaginationPageNumbersComponent currentPage={page} totalPages={totalPages}/>
                 )}
             </div>
-
-            {showScrollToTop && (
-                <button className={css.scrollToTop} onClick={scrollToTop}>↑</button>
-            )}
+            {showScrollToTop && <button className={css.scrollToTop} onClick={scrollToTop}>↑</button>}
         </div>
     );
 };

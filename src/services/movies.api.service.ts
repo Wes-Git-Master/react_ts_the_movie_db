@@ -1,5 +1,5 @@
 import axios from "axios";
-import {baseURL} from "../constants/urls";
+import {accessToken, baseURL} from "../constants/urls";
 import {IMoviesAxiosResponse} from "../interfaces/IMoviesAxiosResponse";
 import {IGenresAxiosResponse} from "../interfaces/IGenresAxiosResponse";
 import {IMovie} from "../interfaces/IMovie";
@@ -8,6 +8,11 @@ const axiosInstance = axios.create({
     baseURL: baseURL,
     headers: {"Content-Type": "application/json"}
 });
+
+axiosInstance.interceptors.request.use(req => {
+    req.headers.Authorization = `Bearer ${accessToken}`
+    return req
+})
 
 const moviesApiService = {
 

@@ -4,6 +4,8 @@ import {useAppDispatch, useAppSelector} from "../../../hooks/reduxHooks/redux.ty
 import {moviesActions} from "../../../redux/slices/moviesSlice";
 import {posterBaseURL} from "../../../constants/urls";
 import css from "../../../styles/movie.info.module.css"
+import {useLoading} from "../../../hooks/useLoading";
+import {BeatLoader} from "react-spinners";
 
 
 const MovieInfoComponent: FC = () => {
@@ -13,7 +15,9 @@ const MovieInfoComponent: FC = () => {
     const {movieId} = useParams<{ movieId: string }>();
     const dispatch = useAppDispatch();
     const movie = useAppSelector(state => state.movies.selectedMovie);
+    const status = useAppSelector(state => state.movies.status);
     const navigate = useNavigate();
+    const loading = useLoading(status);
 
     useEffect(() => {
         if (movieId) {
@@ -26,7 +30,10 @@ const MovieInfoComponent: FC = () => {
     };
 
     if (!movie) {
-        return <div>Loading...</div>;
+        return <div className={css.load}>
+            <p>Loading</p>
+            <BeatLoader color="red" loading={loading} size={16}/>
+        </div>;
     }
 
     //===========================================================================================================
