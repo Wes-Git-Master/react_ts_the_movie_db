@@ -10,6 +10,7 @@ import {PaginationPageNumbersComponent} from "../../paginations/PaginationPageNu
 import {MovieSearchComponent} from "../../search/MovieSearchComponent";
 import css from "../../../styles/movies.list.module.css";
 import css_common from "../../../styles/css_common/button.module.css";
+import css_common2 from "../../../styles/css_common/button.scroll.to.top.module.css"
 
 const MoviesListComponent = () => {
 
@@ -98,7 +99,7 @@ const MoviesListComponent = () => {
                     <PaginationPageNumbersComponent currentPage={page} totalPages={totalPages}/>
                 )}
             </div>
-            {showScrollToTop && <button className={css.scrollToTop} onClick={scrollToTop}>↑</button>}
+            {showScrollToTop && <button className={css_common2.scrollToTop} onClick={scrollToTop}>↑</button>}
         </div>
     );
 };
