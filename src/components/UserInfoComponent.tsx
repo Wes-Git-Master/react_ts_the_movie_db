@@ -5,6 +5,7 @@ import {authApiService} from "../services/auth.api.service";
 import {useAppSelector} from "../hooks/reduxHooks/redux.type.hooks";
 import {useLoading} from "../hooks/useLoading";
 import {BeatLoader} from "react-spinners";
+import css from "../styles/header.module.css";
 
 const UserInfoComponent: FC = () => {
 
@@ -37,8 +38,9 @@ const UserInfoComponent: FC = () => {
 
     if (!sessionId) {
         return (
-            <div>
-                <NavLink to="/login">Login</NavLink>
+            <div className={css.header_links_block}>
+                <div className={css.home}><NavLink to="/home">Home</NavLink></div>
+                <div className={css.movie_list}><NavLink to="/login">Login</NavLink></div>
             </div>
         );
     }
