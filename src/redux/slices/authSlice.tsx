@@ -38,7 +38,8 @@ const createSession = createAsyncThunk(
     async (requestToken: string, thunkAPI) => {
         try {
             const response = await authApiService.createNewSession(requestToken)
-            return thunkAPI.fulfillWithValue(response.sessionId);
+            // console.log(response.sessionId)
+            return thunkAPI.fulfillWithValue(response.session_id);
         } catch (e) {
             const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error)
@@ -88,5 +89,5 @@ const authSlice = createSlice({
 export const authActions = {
     ...authSlice,
     getRequestToken,
-    createSession,
+    createSession
 }

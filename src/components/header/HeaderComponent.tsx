@@ -3,6 +3,7 @@ import {NavLink, useNavigate} from "react-router-dom";
 import {useAppSelector} from "../../hooks/reduxHooks/redux.type.hooks";
 import css from "../../styles/header.module.css"
 import {ThemeSwitcherComponent} from "../theme/ThemeSwitcherComponent";
+import {UserInfoComponent} from "../UserInfoComponent";
 
 const HeaderComponent = () => {
 
@@ -16,10 +17,6 @@ const HeaderComponent = () => {
 
         const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
         setLogin(loggedIn);
-
-        if (!loggedIn) {
-            navigate('/login');
-        }
 
         if (status === "succeeded" && loggedIn) {
             setLogin(true);
@@ -39,6 +36,7 @@ const HeaderComponent = () => {
                 <div className={css.home}><NavLink to={'home'}>HOME</NavLink></div>
                 <div className={css.movie_list}><NavLink to={'moviesList'}>MOVIES</NavLink></div>
             </div>}
+            <UserInfoComponent/>
             <ThemeSwitcherComponent/>
         </div>
     );

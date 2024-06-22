@@ -15,6 +15,7 @@ const AuthenticatedComponent: FC = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch()
     const status = useAppSelector(state => state.auth.status)
+    const sessionId = useAppSelector(state => state.auth.sessionId);
     const loading = useLoading(status);
 
     useEffect(() => {
@@ -32,12 +33,13 @@ const AuthenticatedComponent: FC = () => {
 
     useEffect(() => {
         if (status === 'succeeded') {
-            navigate('/moviesList');
+            localStorage.setItem('sessionId', sessionId);
+            navigate('/moviesList')
         }
         if (status === 'failed') {
             navigate('/login')
         }
-    }, [status, navigate]);
+    }, [status, navigate,sessionId]);
 
     //===========================================================================================================
 
