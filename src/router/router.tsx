@@ -2,8 +2,8 @@ import {createBrowserRouter, RouteObject} from "react-router-dom";
 import {MainLayout} from "../layouts/MainLayout";
 import {HomePage} from "../pages/HomePage";
 import {LoginPage} from "../pages/LoginPage";
-import {AuthenticatedPage} from "../pages/AuthenticatedPage";
-import {AuthenticatePage} from "../pages/AuthenticatePage";
+import {AuthenticatedComponent} from "../components/auth/AuthenticatedComponent";
+import {AuthenticateComponent} from "../components/auth/AuthenticateComponent";
 import {MoviePage} from "../pages/MoviePage";
 import {MovieInfoComponent} from "../components/movies/movie_info/MovieInfoComponent";
 
@@ -14,8 +14,8 @@ const routes: RouteObject[] = [
             {index: true, element: <HomePage/>},
             {path: 'home', element: <HomePage/>},
             {path: 'login', element: <LoginPage/>},
-            {path: 'authenticated', element: <AuthenticatedPage/>},
-            {path: 'authenticate/:requestToken', element: <AuthenticatePage/>},
+            {path: 'authenticate/:requestToken', element: <AuthenticateComponent/>},
+            {path: 'authenticated', element: <AuthenticatedComponent/>},
             {path: 'moviesList', element: <MoviePage/>},
             {path: 'movieInfo/:movieId', element: <MovieInfoComponent/>}
         ]
