@@ -1,40 +1,27 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useEffect} from 'react';
 import {NavLink} from 'react-router-dom';
-import {IUser} from "../../interfaces/IUser";
-import {authApiService} from "../../services/auth.api.service";
-import {useAppSelector} from "../../hooks/reduxHooks/redux.type.hooks";
+import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks/redux.type.hooks";
 import {useLoading} from "../../hooks/useLoading";
 import {BeatLoader} from "react-spinners";
 import css from "../../styles/header.module.css";
+import {userActions} from "../../redux/slices/userSlice";
 
 const UserInfoComponent: FC = () => {
 
     //===========================================================================================================
 
     const sessionId = localStorage.getItem('sessionId');
-    const [userInfo, setUserInfo] = useState<IUser | null>(null);
-    const [error, setError] = useState<string | null>(null);
-    const status = useAppSelector(state => state.auth.status);
+    const {userInfo, error} = useAppSelector(state => state.user);
+    const status = useAppSelector(state => state.user.status);
     const loading = useLoading(status);
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
-        const axiosUserInfo = async () => {
-            if (sessionId) {
-                try {
-                    const userInfo = await authApiService.getUserInfo(sessionId);
-                    setUserInfo(userInfo);
-                } catch (error) {
-                    if (error instanceof Error) {
-                        setError(error.message);
-                    } else {
-                        setError('An unknown error occurred');
-                    }
-                }
-            }
-        };
+        if (sessionId) {
+            dispatch(userActions.getUserInfo(sessionId))
+        }
 
-        axiosUserInfo().then();
-    }, [sessionId]);
+    }, [sessionId, dispatch]);
 
     if (!sessionId) {
         return (

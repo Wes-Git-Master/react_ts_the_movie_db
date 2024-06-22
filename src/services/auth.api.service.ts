@@ -2,7 +2,6 @@ import axios from "axios";
 import {apiKEY, baseURL} from "../constants/urls";
 import {IRequestToken} from "../interfaces/IRequestToken";
 import {ISessionId} from "../interfaces/ISessionId";
-import {IUser} from "../interfaces/IUser";
 
 
 const axiosInstance = axios.create({
@@ -22,10 +21,6 @@ const authApiService = {
     createNewSession: async (requestToken: string): Promise<ISessionId> => {
         const response = await axiosInstance.post(`${baseURL}/authentication/session/new?api_key=${apiKEY}`, {request_token: requestToken})
         return response.data
-    },
-    getUserInfo: async (sessionId: string): Promise<IUser> => {
-        const response = await axiosInstance.get<IUser>(`${baseURL}/account?api_key=${apiKEY}&session_id=${sessionId}`);
-        return response.data;
     }
 }
 
