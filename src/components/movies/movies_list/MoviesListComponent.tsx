@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "../../../hooks/reduxHooks/redux.type.hooks";
-import {useNavigate, useSearchParams} from "react-router-dom";
+import {useSearchParams} from "react-router-dom";
 import {useLoading} from "../../../hooks/useLoading";
 import {moviesActions} from "../../../redux/slices/moviesSlice";
 import {GenresDropdownComponent} from "../genres/GenresDropdownComponent";
@@ -9,8 +9,9 @@ import {MoviesListCardComponent} from "./MoviesListCardComponent";
 import {PaginationPageNumbersComponent} from "../../paginations/PaginationPageNumbersComponent";
 import {MovieSearchComponent} from "../../search/MovieSearchComponent";
 import css from "../../../styles/movies.list.module.css";
-import css_common from "../../../styles/css_common/button.module.css";
-import css_common2 from "../../../styles/css_common/button.scroll.to.top.module.css"
+import css_common from "../../../styles/css_common/button.module.css"
+import {ScrollToTopButton} from "../../buttons/ScrollToTopButton";
+import {Button} from "../../buttons/Button";
 
 const MoviesListComponent = () => {
 
@@ -22,28 +23,10 @@ const MoviesListComponent = () => {
     const page = searchParams.get('page') || '1';
     const genreId = searchParams.get('genre') || '';
     const loading = useLoading(status);
-    const [showScrollToTop, setShowScrollToTop] = useState(false);
-    const navigate = useNavigate();
-
 
     useEffect(() => {
         dispatch(moviesActions.getAllMovies({page, genreId}));
     }, [dispatch, page, genreId]);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setShowScrollToTop(window.scrollY > 1225);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    const scrollToTop = () => {
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    };
 
     const handleSearch = (query: string) => {
         if (query.trim() !== '') {
@@ -51,10 +34,6 @@ const MoviesListComponent = () => {
         } else {
             dispatch(moviesActions.getAllMovies({page, genreId}));
         }
-    };
-
-    const handleBackClick = () => {
-        navigate(-1);
     };
 
     //===========================================================================================================
@@ -84,7 +63,7 @@ const MoviesListComponent = () => {
                         ))
                     ) : (
                         <div className={css.no_results}>
-                            <button onClick={handleBackClick} className={css_common.generalButton}>Back</button>
+                            <Button className={css_common.generalButton}/>
                             <div>
                                 <p>No results</p>
                                 <span><BeatLoader color="red" loading={loading} size={16}/></span>
@@ -99,7 +78,7 @@ const MoviesListComponent = () => {
                     <PaginationPageNumbersComponent currentPage={page} totalPages={totalPages}/>
                 )}
             </div>
-            {showScrollToTop && <button className={css_common2.scrollToTop} onClick={scrollToTop}>↑</button>}
+            <ScrollToTopButton threshold={1225}/>
         </div>
     );
 };
