@@ -5,7 +5,7 @@ interface ScrollToTopButtonProps {
     threshold: number
 }
 
-const ScrollToTopButton: FC<ScrollToTopButtonProps> = ({threshold = 300}) => {
+const ScrollToTopButton: FC<ScrollToTopButtonProps> = ({threshold }) => {
     const [showScrollToTop, setShowScrollToTop] = useState(false);
 
     useEffect(() => {

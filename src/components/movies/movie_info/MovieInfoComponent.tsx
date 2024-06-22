@@ -7,9 +7,10 @@ import {useLoading} from "../../../hooks/useLoading";
 import {BeatLoader} from "react-spinners";
 import css from "../../../styles/movie.info.module.css"
 import css_common from "../../../styles/css_common/button.module.css"
-import {GenresOfMovieComponent} from "./GenresOfMovieComponent";
+import {GenresOfMovie} from "./GenresOfMovie";
 import {ScrollToTopButton} from "../../buttons/ScrollToTopButton";
 import {Button} from "../../buttons/Button";
+import ReactPlayer from "react-player";
 
 
 const MovieInfoComponent: FC = () => {
@@ -19,13 +20,16 @@ const MovieInfoComponent: FC = () => {
     const {movieId} = useParams<{ movieId: string }>();
     const dispatch = useAppDispatch();
     const movie = useAppSelector(state => state.movies.selectedMovie);
+    const videos = useAppSelector(state => state.movies.videos);
     const status = useAppSelector(state => state.movies.status);
     const genresStatus = useAppSelector(state => state.movies.genresStatus);
     const loading = useLoading(status);
 
+
     useEffect(() => {
         if (movieId) {
             dispatch(moviesActions.getMovieDetails(movieId));
+            dispatch(moviesActions.getMovieVideos(movieId));
         }
         if (genresStatus === 'idle') {
             dispatch(moviesActions.getGenres());
@@ -39,6 +43,7 @@ const MovieInfoComponent: FC = () => {
         </div>;
     }
 
+    const trailer = videos?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     //===========================================================================================================
 
@@ -56,7 +61,7 @@ const MovieInfoComponent: FC = () => {
                     <div className={css.movie_Info_Container_right}>
 
                         <div className={css.genres_of_movie_block}>
-                            Genres: {movie.genres?.map(genre => <GenresOfMovieComponent genre={genre} key={genre.id}/>)}
+                            Genres: {movie.genres?.map(genre => <GenresOfMovie genre={genre} key={genre.id}/>)}
                         </div>
 
                         <div className={css.movie_info_block}>
@@ -71,10 +76,16 @@ const MovieInfoComponent: FC = () => {
                 </div>
 
                 <div className={css.overview_block}>
-                    <p>Overview</p>
+                    <p>Overview ...</p>
                     <br/>
                     <p>{movie.overview}</p>
                 </div>
+                {trailer && (
+                    <div className={css.video_block}>
+                        <ReactPlayer url={`https://www.youtube.com/watch?v=${trailer.key}`} controls height={400}
+                                     width={800}/>
+                    </div>
+                )}
             </div>
             <ScrollToTopButton threshold={45}/>
         </div>

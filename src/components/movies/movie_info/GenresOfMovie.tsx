@@ -6,7 +6,7 @@ interface IProps {
     genre: IGenre
 }
 
-const GenresOfMovieComponent: FC<IProps> = ({genre}) => {
+const GenresOfMovie: FC<IProps> = ({genre}) => {
 
     return (
         <div className={css.genre}>
@@ -15,4 +15,4 @@ const GenresOfMovieComponent: FC<IProps> = ({genre}) => {
     );
 };
 
-export {GenresOfMovieComponent};
+export {GenresOfMovie};

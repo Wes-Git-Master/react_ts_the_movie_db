@@ -3,6 +3,7 @@ import {accessToken, apiKEY, baseURL} from "../constants/urls";
 import {IMoviesAxiosResponse} from "../interfaces/IMoviesAxiosResponse";
 import {IGenresAxiosResponse} from "../interfaces/IGenresAxiosResponse";
 import {IMovie} from "../interfaces/IMovie";
+import {IVideo} from "../interfaces/IVideo";
 
 const axiosInstance = axios.create({
     baseURL: baseURL,
@@ -46,6 +47,10 @@ const moviesApiService = {
         const response
             = await axiosInstance.get<IMoviesAxiosResponse>(`${baseURL}/movie/popular?api_key=${apiKEY}`);
         return response.data
+    },
+    getMovieVideos: async (movieId: string): Promise<IVideo[]> => {
+        const response = await axios.get(`${baseURL}/movie/${movieId}/videos?api_key=${apiKEY}`);
+        return response.data.results
     }
 }
 

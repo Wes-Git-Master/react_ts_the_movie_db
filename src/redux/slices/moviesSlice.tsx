@@ -4,6 +4,7 @@ import {AxiosError} from "axios";
 import {IMovie} from "../../interfaces/IMovie";
 import {IMoviesAxiosResponse} from "../../interfaces/IMoviesAxiosResponse";
 import {IGenre} from "../../interfaces/IGenre";
+import {IVideo} from "../../interfaces/IVideo";
 
 //===========================================================================================================
 
@@ -12,6 +13,7 @@ interface IMoviesState {
     selectedMovie: IMovie | null,
     genres: IGenre[],
     genresStatus: 'idle' | 'loading' | 'succeeded' | 'failed',
+    videos: IVideo[] | null,
     status: 'idle' | 'loading' | 'succeeded' | 'failed',
     totalPages: number,
     error: string | null
@@ -22,6 +24,7 @@ const initialState: IMoviesState = {
     selectedMovie: null,
     genres: [],
     genresStatus: 'idle',
+    videos: null,
     status: 'idle',
     totalPages: 1,
     error: null
@@ -79,12 +82,27 @@ const getGenres = createAsyncThunk(
         }
     }
 );
+
 const getPopularMovies = createAsyncThunk(
     'movies/getPopularMovies',
     async (_, thunkAPI) => {
         try {
             const response = await moviesApiService.getPopularMovies();
             return thunkAPI.fulfillWithValue(response.results)
+        } catch (e) {
+            const error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error)
+        }
+    }
+);
+
+export const getMovieVideos = createAsyncThunk(
+    'movies/getMovieVideos',
+    async (movieId: string, thunkAPI) => {
+        try {
+            const response = await moviesApiService.getMovieVideos(movieId);
+            return thunkAPI.fulfillWithValue(response)
+
         } catch (e) {
             const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error)
@@ -163,6 +181,16 @@ const moviesSlice = createSlice({
                 state.status = 'failed';
                 state.error = action.error.message || 'Failed to fetch popular movies';
             })
+            //===========================================================================================================
+            .addCase(getMovieVideos.fulfilled, (state, action) => {
+                state.videos = action.payload;
+            })
+            .addCase(getMovieVideos.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(getMovieVideos.rejected, (state) => {
+                state.status = 'failed';
+            })
 })
 
 export const moviesActions = {
@@ -171,5 +199,6 @@ export const moviesActions = {
     getMovieDetails,
     searchMovies,
     getGenres,
-    getPopularMovies
+    getPopularMovies,
+    getMovieVideos
 }
