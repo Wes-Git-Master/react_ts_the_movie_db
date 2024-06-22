@@ -17,7 +17,6 @@ interface IMoviesState {
     error: string | null
 }
 
-
 const initialState: IMoviesState = {
     movies: [],
     selectedMovie: null,
@@ -27,7 +26,6 @@ const initialState: IMoviesState = {
     totalPages: 1,
     error: null
 }
-
 
 //===========================================================================================================
 
@@ -78,6 +76,18 @@ const getGenres = createAsyncThunk(
         } catch (e) {
             const error = e as AxiosError;
             return thunkAPI.rejectWithValue(error);
+        }
+    }
+);
+const getPopularMovies = createAsyncThunk(
+    'movies/getPopularMovies',
+    async (_, thunkAPI) => {
+        try {
+            const response = await moviesApiService.getPopularMovies();
+            return thunkAPI.fulfillWithValue(response.results)
+        } catch (e) {
+            const error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error)
         }
     }
 );
@@ -141,6 +151,18 @@ const moviesSlice = createSlice({
                 state.genresStatus = 'failed';
                 state.error = action.error.message || 'Failed to fetch genres';
             })
+            //===========================================================================================================
+            .addCase(getPopularMovies.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(getPopularMovies.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.movies = action.payload;
+            })
+            .addCase(getPopularMovies.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message || 'Failed to fetch popular movies';
+            })
 })
 
 export const moviesActions = {
@@ -148,5 +170,6 @@ export const moviesActions = {
     getAllMovies,
     getMovieDetails,
     searchMovies,
-    getGenres
+    getGenres,
+    getPopularMovies
 }
