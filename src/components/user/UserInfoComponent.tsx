@@ -33,7 +33,7 @@ const UserInfoComponent: FC = () => {
     }
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return <div>Login error</div>;
     }
 
     if (!userInfo) {

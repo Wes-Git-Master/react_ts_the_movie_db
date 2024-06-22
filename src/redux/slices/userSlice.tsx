@@ -31,11 +31,7 @@ const getUserInfo = createAsyncThunk(
 const userSlice = createSlice({
     name: "user",
     initialState,
-    reducers: {
-        resetUserInfo(state) {
-            state.userInfo = null;
-        },
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(getUserInfo.pending, (state) => {
@@ -51,8 +47,6 @@ const userSlice = createSlice({
             });
     },
 });
-
-export const {resetUserInfo} = userSlice.actions
 
 export const userActions = {
     ...userSlice,
