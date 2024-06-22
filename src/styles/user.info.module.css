@@ -1,0 +1,10 @@
+.user_block {
+    margin-top: 9px;
+}
+
+.user_block p {
+    color: rgba(206, 206, 206, 0.84);
+    border-bottom: 1px rgba(140, 18, 18, 0.55) solid;
+    padding-bottom: 9px;
+    border-radius: 5px;
+}

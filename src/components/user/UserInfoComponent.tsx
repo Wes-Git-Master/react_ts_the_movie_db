@@ -4,6 +4,7 @@ import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks/redux.type.
 import {useLoading} from "../../hooks/useLoading";
 import {BeatLoader} from "react-spinners";
 import css from "../../styles/header.module.css";
+import css_2 from "../../styles/user.info.module.css"
 import {userActions} from "../../redux/slices/userSlice";
 
 const UserInfoComponent: FC = () => {
@@ -46,7 +47,7 @@ const UserInfoComponent: FC = () => {
     }
 
     return (
-        <div>
+        <div className={css_2.user_block}>
             <p>{userInfo.username}</p>
         </div>
     );

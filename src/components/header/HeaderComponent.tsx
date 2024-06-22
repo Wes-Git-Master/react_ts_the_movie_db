@@ -31,13 +31,14 @@ const HeaderComponent = () => {
     //===========================================================================================================
 
     return (
-        <div className={css.header}>
+        <div className={css.header_links}>
             {is_login && <div className={css.header_links_block}>
                 <div className={css.home}><NavLink to={'home'}>HOME</NavLink></div>
                 <div className={css.movie_list}><NavLink to={'moviesList'}>MOVIES</NavLink></div>
             </div>}
             <UserInfoComponent/>
             <ThemeSwitcherComponent/>
+
         </div>
     );
 };
