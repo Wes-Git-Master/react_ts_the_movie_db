@@ -3,7 +3,7 @@ import {NavLink, useNavigate} from "react-router-dom";
 import {useAppSelector} from "../../hooks/reduxHooks/redux.type.hooks";
 import css from "../../styles/header.module.css"
 import {ThemeSwitcherComponent} from "../theme/ThemeSwitcherComponent";
-import {UserInfoComponent} from "../UserInfoComponent";
+import {UserInfoComponent} from "../user/UserInfoComponent";
 
 const HeaderComponent = () => {
 

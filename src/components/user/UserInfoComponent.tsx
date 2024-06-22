@@ -1,11 +1,11 @@
 import React, {FC, useEffect, useState} from 'react';
 import {NavLink} from 'react-router-dom';
-import {IUser} from "../interfaces/IUser";
-import {authApiService} from "../services/auth.api.service";
-import {useAppSelector} from "../hooks/reduxHooks/redux.type.hooks";
-import {useLoading} from "../hooks/useLoading";
+import {IUser} from "../../interfaces/IUser";
+import {authApiService} from "../../services/auth.api.service";
+import {useAppSelector} from "../../hooks/reduxHooks/redux.type.hooks";
+import {useLoading} from "../../hooks/useLoading";
 import {BeatLoader} from "react-spinners";
-import css from "../styles/header.module.css";
+import css from "../../styles/header.module.css";
 
 const UserInfoComponent: FC = () => {
 
