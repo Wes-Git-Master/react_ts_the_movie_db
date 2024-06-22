@@ -20,7 +20,7 @@ const LoginPage: FC = () => {
     const loading = useLoading(status);
 
     useEffect(() => {
-        if (status !== 'succeeded') {
+        if (status !== 'succeeded' && status !== 'loading') {
             dispatch(authActions.getRequestToken())
         }
     }, [status, dispatch]);

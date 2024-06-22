@@ -5,7 +5,7 @@ import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks/redux.type.
 import {BeatLoader} from "react-spinners";
 import {useLoading} from "../../hooks/useLoading";
 import css from "../../styles/authenticate.module.css"
-import {authActions} from "../../redux/slices/authSlice";
+import {loginSuccess} from "../../redux/slices/authSlice";
 
 const AuthenticateComponent: FC = () => {
 
@@ -20,11 +20,16 @@ const AuthenticateComponent: FC = () => {
     useEffect(() => {
         if (authUrl) {
             window.location.href = authUrl;
-            localStorage.setItem('isLoggedIn', 'true');
-            authActions.actions.loginSuccess()
         }
 
     }, [authUrl, dispatch]);
+
+    useEffect(() => {
+        if (status === 'succeeded') {
+            localStorage.setItem('isLoggedIn', 'true');
+            dispatch(loginSuccess());
+        }
+    }, [status, dispatch]);
 
     //===========================================================================================================
 

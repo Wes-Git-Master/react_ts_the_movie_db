@@ -32,7 +32,7 @@ const AuthenticatedComponent: FC = () => {
     }, [location, dispatch]);
 
     useEffect(() => {
-        if (status === 'succeeded') {
+        if (status === 'succeeded' && sessionId) {
             localStorage.setItem('sessionId', sessionId);
             navigate('/moviesList')
         }

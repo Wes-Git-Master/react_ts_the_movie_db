@@ -85,6 +85,7 @@ const authSlice = createSlice({
     },
 });
 
+export const { loginSuccess } = authSlice.actions;
 
 export const authActions = {
     ...authSlice,
