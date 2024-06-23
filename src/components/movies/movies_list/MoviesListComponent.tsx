@@ -78,7 +78,7 @@ const MoviesListComponent = () => {
                     <PaginationPageNumbersComponent currentPage={page} totalPages={totalPages}/>
                 )}
             </div>
-            <ScrollToTopButton threshold={1225}/>
+            <ScrollToTopButton threshold={1207} scrollOnMount={true} top={0}/>
         </div>
     );
 };

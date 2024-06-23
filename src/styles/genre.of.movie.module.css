@@ -2,5 +2,14 @@
 .genre p {
     color: #0e79ec;
     margin: 0 0 10px 30px;
-    border-bottom: #1e60a8 1px solid;
+}
+
+.genreLink{
+    text-decoration: none;
+    color: #2196F3;
+    font-weight: bold;
+}
+
+.genreLink:hover {
+    text-decoration: underline;
 }

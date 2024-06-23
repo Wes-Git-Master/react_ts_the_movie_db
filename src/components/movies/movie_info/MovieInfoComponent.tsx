@@ -11,8 +11,6 @@ import {GenresOfMovie} from "./GenresOfMovie";
 import {ScrollToTopButton} from "../../buttons/ScrollToTopButton";
 import {Button} from "../../buttons/Button";
 import ReactPlayer from "react-player";
-import {Simulate} from "react-dom/test-utils";
-import playing = Simulate.playing;
 
 
 const MovieInfoComponent: FC = () => {
@@ -68,11 +66,11 @@ const MovieInfoComponent: FC = () => {
                         </div>
 
                         <div className={css.movie_info_block}>
-                            <p>Release Date - {movie.release_date}</p>
-                            <p>Rating: {movie.vote_average}</p>
-                            <p>Vote count: {movie.vote_count}</p>
-                            <p>Original Language - {movie.original_language}</p>
-                            <p>Popularity: {movie.popularity}</p>
+                            <p>Release Date | {movie.release_date}</p>
+                            <p>Rating | {movie.vote_average}</p>
+                            <p>Vote count | {movie.vote_count}</p>
+                            <p>Original Language |  {movie.original_language}</p>
+                            <p>Popularity | {movie.popularity}</p>
                         </div>
 
                     </div>
@@ -96,7 +94,7 @@ const MovieInfoComponent: FC = () => {
                     </div>
                 )}
             </div>
-            <ScrollToTopButton threshold={45}/>
+            <ScrollToTopButton threshold={85} scrollOnMount={true} top={160}/>
         </div>
     );
 };

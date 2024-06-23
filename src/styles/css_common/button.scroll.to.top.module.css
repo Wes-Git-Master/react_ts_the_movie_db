@@ -1,10 +1,10 @@
 .scrollToTop {
-    height: 62px;
-    width: 62px;
+    height: 61px;
+    width: 61px;
     position: fixed;
     bottom: 23px;
     right: 34px;
-    background-color: rgba(0, 123, 255, 0.21);
+    background-color: rgba(0, 123, 255, 0.16);
     color: white;
     border: none;
     border-radius: 50%;
@@ -17,6 +17,7 @@
 }
 
 .scrollToTop:hover {
-    background-color: #106ed3;
+    /*background-color: #106ed3;*/
+    background-color: #0974ea;
     transition: 1s;
 }

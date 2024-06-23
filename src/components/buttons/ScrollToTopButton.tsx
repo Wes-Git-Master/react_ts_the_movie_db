@@ -2,11 +2,22 @@ import React, {FC, useEffect, useState} from 'react';
 import css_common from "../../styles/css_common/button.scroll.to.top.module.css"
 
 interface ScrollToTopButtonProps {
-    threshold: number
+    threshold: number,
+    scrollOnMount: boolean,
+    top: number
 }
 
-const ScrollToTopButton: FC<ScrollToTopButtonProps> = ({threshold }) => {
+const ScrollToTopButton: FC<ScrollToTopButtonProps> = ({threshold,scrollOnMount,top= 0 }) => {
+
+    //===========================================================================================================
+
     const [showScrollToTop, setShowScrollToTop] = useState(false);
+
+    useEffect(() => {
+        if (scrollOnMount) {
+            window.scrollTo({ top, behavior: 'smooth' });
+        }
+    }, [scrollOnMount,top])
 
     useEffect(() => {
         const handleScroll = () => {
