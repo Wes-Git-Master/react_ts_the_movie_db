@@ -19,6 +19,7 @@
     border-radius: 20px;
     padding: 10px;
     transition: color 64ms;
+    margin: 0 0 0 42px;
 }
 
 .home a:hover {
@@ -31,9 +32,10 @@
     color: rgba(182, 45, 45, 0.56);
 }
 
+/**********************************/
 
 .movie_list a {
-    margin: 0 700px 0 120px;
+    margin: 0 700px 0 90px;
     text-decoration: none;
     font-size: 26px;
     color: rgb(163, 168, 204);
@@ -44,11 +46,27 @@
 }
 
 .movie_list a:hover {
-    color: rgba(199, 199, 199, 0.94);
+    color: rgba(173, 173, 173, 0.94);
     transition: color 0.3s;
 }
 
 .movie_list a:active {
     transition: 0.1s;
     color: rgb(43, 62, 87);
+}
+
+/****************************************************/
+
+.header_user_theme_block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user {
+    margin: 88px;
+}
+
+.theme {
+    margin-right: 42px;
 }

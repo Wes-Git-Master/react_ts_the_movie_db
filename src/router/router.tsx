@@ -6,10 +6,12 @@ import {AuthenticatedComponent} from "../components/auth/AuthenticatedComponent"
 import {AuthenticateComponent} from "../components/auth/AuthenticateComponent";
 import {MoviePage} from "../pages/MoviePage";
 import {MovieInfoComponent} from "../components/movies/movie_info/MovieInfoComponent";
+import {ErrorLayout} from "../layouts/error/ErrorLayout";
 
 const routes: RouteObject[] = [
     {
         path: '', element: <MainLayout/>,
+        errorElement:<ErrorLayout/>,
         children: [
             {index: true, element: <HomePage/>},
             {path: 'home', element: <HomePage/>},

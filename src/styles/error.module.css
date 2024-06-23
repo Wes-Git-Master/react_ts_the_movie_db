@@ -1,0 +1,52 @@
+.fullscreenContainer {
+    position: fixed;
+    top: 90px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+.errorContent {
+    z-index: 1;
+    text-align: center;
+}
+
+.errorContent p {
+    font-size: 22px;
+}
+
+.errorIcon {
+        margin: 80px 0 0 0;
+    font-size: 100px;
+    animation: bounce 2s infinite;
+}
+
+.errorTitle {
+    font-size: 36px;
+    margin-top: 20px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 75%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
