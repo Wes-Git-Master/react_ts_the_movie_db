@@ -7,15 +7,15 @@ interface IProps {
     genre: IGenre
 }
 
-const GenresOfMovie: FC<IProps> = ({genre}) => {
+const GenreBadgeComponent: FC<IProps> = ({genre}) => {
 
     return (
         <div className={css.genre}>
             <NavLink to={`/moviesList?genre=${genre.id}`} className={css.genreLink}>
-            <p>{genre.name}</p>
+                <p>{genre.name}</p>
             </NavLink>
         </div>
     );
 };
 
-export {GenresOfMovie};
+export {GenreBadgeComponent};

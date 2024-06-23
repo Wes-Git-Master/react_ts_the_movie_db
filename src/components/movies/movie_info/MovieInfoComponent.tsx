@@ -7,7 +7,7 @@ import {useLoading} from "../../../hooks/useLoading";
 import {BeatLoader} from "react-spinners";
 import css from "../../../styles/movie.info.module.css"
 import css_common from "../../../styles/css_common/button.module.css"
-import {GenresOfMovie} from "../genres/GenresOfMovie";
+import {GenreBadgeComponent} from "../genres/GenreBadgeComponent";
 import {ScrollToTopButton} from "../../buttons/ScrollToTopButton";
 import {Button} from "../../buttons/Button";
 import ReactPlayer from "react-player";
@@ -59,12 +59,11 @@ const MovieInfoComponent: FC = () => {
                         <h3>- {movie.title} -</h3>
                         <img src={`${posterBaseURL + movie.poster_path}`} alt={movie.title}/>
                     </div>
-                    <div className={css.movie_Info_Container_right}>
 
+                    <div className={css.movie_Info_Container_right}>
                         <div className={css.genres_of_movie_block}>
                             <h3>Genres</h3>
-                            <span>*</span>
-                            {movie.genres?.map(genre => <GenresOfMovie genre={genre} key={genre.id}/>)}
+                            {movie.genres?.map(genre => <GenreBadgeComponent genre={genre} key={genre.id}/>)}
                         </div>
 
                         <div className={css.movie_info_block}>
@@ -74,7 +73,6 @@ const MovieInfoComponent: FC = () => {
                             <div><p>Original Language</p><span>|</span><p>{movie.original_language}</p></div>
                             <div><p>Popularity</p><span>|</span><p>{movie.popularity}</p></div>
                         </div>
-
                     </div>
                 </div>
 
@@ -83,19 +81,23 @@ const MovieInfoComponent: FC = () => {
                     <br/>
                     <p>{movie.overview}</p>
                 </div>
+
                 {trailer && (
                     <div className={css.video_block}>
                         <ReactPlayer url={`https://www.youtube.com/watch?v=${trailer.key}`} controls height={400}
                                      width={800}/>
                     </div>
                 )}
+
                 {movieClip && (
                     <div className={css.video_block}>
                         <ReactPlayer url={`https://www.youtube.com/watch?v=${movieClip.key}`} controls height={400}
                                      width={800}/>
                     </div>
                 )}
+
             </div>
+
             <ScrollToTopButton threshold={85} scrollOnMount={true} top={160}/>
         </div>
     );
