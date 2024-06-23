@@ -5,6 +5,7 @@ import css from "../../styles/header.module.css"
 import {ThemeSwitcherComponent} from "../theme/ThemeSwitcherComponent";
 import {UserInfoComponent} from "../user/UserInfoComponent";
 
+
 const HeaderComponent = () => {
 
     //===========================================================================================================
@@ -38,7 +39,7 @@ const HeaderComponent = () => {
             </div>}
             <div className={css.header_user_theme_block}>
                 <div className={css.user}><UserInfoComponent/></div>
-                <div className={css.theme}> <ThemeSwitcherComponent/></div>
+                <div className={css.theme}><ThemeSwitcherComponent/></div>
             </div>
 
         </div>

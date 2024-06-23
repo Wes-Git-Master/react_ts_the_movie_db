@@ -2,13 +2,13 @@ import React, {FC} from 'react';
 import {useSearchParams} from 'react-router-dom';
 import css from "../../styles/pagination.page.numbers.module.css"
 
-interface PaginationProps {
+interface IProps {
     currentPage: string,
     totalPages: number,
     pagesPerGroup: number
 }
 
-const PaginationPageNumbersComponent: FC<PaginationProps> = ({currentPage, totalPages, pagesPerGroup}) => {
+const PaginationPageNumbersComponent: FC<IProps> = ({currentPage, totalPages, pagesPerGroup}) => {
 
     //===========================================================================================================
 

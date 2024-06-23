@@ -1,11 +1,11 @@
 import React, {FC} from 'react';
 import {useNavigate} from 'react-router-dom';
 
-interface BackButtonProps {
+interface IProps {
     className: string;
 }
 
-const Button: FC<BackButtonProps> = ({className}) => {
+const Button: FC<IProps> = ({className}) => {
 
     //===========================================================================================================
 

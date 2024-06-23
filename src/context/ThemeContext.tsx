@@ -1,10 +1,10 @@
 import React, {FC, ReactNode, useEffect, useState} from 'react';
 import {Theme, ThemeContext} from "../hooks/useTheme";
 
+
 interface IProps {
     children: ReactNode;
 }
-
 
 const ThemeProvider: FC<IProps> = ({children}) => {
 

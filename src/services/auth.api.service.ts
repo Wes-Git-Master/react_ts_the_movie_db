@@ -15,7 +15,7 @@ const authApiService = {
 
     getToken: async (): Promise<IRequestToken> => {
         const response
-            = await axiosInstance.get<IRequestToken>(`${baseURL}/authentication/token/new?api_key=${apiKEY}`);
+            = await axiosInstance.get<IRequestToken>(`${baseURL}/authentication/token/new?api_key=${apiKEY}`)
         return response.data
     },
     createNewSession: async (requestToken: string): Promise<ISessionId> => {

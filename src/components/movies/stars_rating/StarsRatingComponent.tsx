@@ -1,13 +1,16 @@
-import React, { FC } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import React, {FC} from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faStar} from '@fortawesome/free-solid-svg-icons';
 import css from '../../../styles/stars.rating.module.css';
 
-interface IMovieRatingProps {
+interface IProps {
     rating: number;
 }
 
-const StarsRatingComponent: FC<IMovieRatingProps> = ({ rating }) => {
+const StarsRatingComponent: FC<IProps> = ({rating}) => {
+
+    //===========================================================================================================
+
     const stars = [];
     const starClasses = determineStarClasses(rating);
 
@@ -37,7 +40,9 @@ const StarsRatingComponent: FC<IMovieRatingProps> = ({ rating }) => {
         return starClasses;
     }
 
+    //===========================================================================================================
+
     return <div className={css.rating}>{stars}</div>;
 };
 
-export { StarsRatingComponent };
+export {StarsRatingComponent};

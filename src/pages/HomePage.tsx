@@ -23,6 +23,8 @@ const HomePage = () => {
         navigate('/moviesList');
     };
 
+    //===========================================================================================================
+
     return (
         <div className={css.homePage}>
             <h1 className={css.welcome}>Welcome to Movie Database</h1>

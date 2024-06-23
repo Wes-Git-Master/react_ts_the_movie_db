@@ -3,11 +3,12 @@ import {IMovie} from "../../../interfaces/IMovie";
 import {posterBaseURL} from "../../../constants/urls";
 import css from '../../../styles/movie.card.module.css';
 
-interface MovieCardProps {
+
+interface IProps {
     movie: IMovie;
 }
 
-const MovieCardComponent: FC<MovieCardProps> = ({movie}) => {
+const MovieCardComponent: FC<IProps> = ({movie}) => {
 
     //===========================================================================================================
 

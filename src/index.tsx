@@ -6,17 +6,20 @@ import {store} from "./redux/Store";
 import {useTheme} from "./hooks/useTheme";
 import {useEffect} from "react";
 import {ThemeProvider} from "./context/ThemeContext";
-import './styles/index.css';
+import './styles/index/index.css';
+
 
 const Root = () => {
-    const {theme} = useTheme();
+    const {theme} = useTheme()
 
     useEffect(() => {
-        document.body.className = theme;
+        document.body.className = theme
     }, [theme]);
 
-    return <RouterProvider router={router}/>;
-};
+    return <RouterProvider router={router}/>
+}
+
+//===========================================================================================================
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement

@@ -7,6 +7,7 @@ import {useLoading} from "../../hooks/useLoading";
 import css from "../../styles/authenticate.module.css"
 import {loginSuccess} from "../../redux/slices/authSlice";
 
+
 const AuthenticateComponent: FC = () => {
 
     //===========================================================================================================
@@ -35,7 +36,7 @@ const AuthenticateComponent: FC = () => {
 
     return (
         <div className={css.authenticate_page_block}>
-            <h1>Redirecting...</h1>
+            <h1>Redirecting</h1>
             <BeatLoader color="red" loading={loading} size={16}/>
         </div>
     );

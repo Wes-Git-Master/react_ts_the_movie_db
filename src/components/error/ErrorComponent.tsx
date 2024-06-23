@@ -14,7 +14,6 @@ const ErrorComponent: FC = () => {
                     <p>You are trying to go to a page that does not exist.</p>
                     <p>press the button to go back</p>
                     <Button className={css_common.generalButton}/>
-
                 </div>
             </div>
         </div>

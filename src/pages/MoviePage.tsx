@@ -13,7 +13,6 @@ const MoviePage = () => {
 
             {login ? <MoviesListComponent/> : <LoginPage/>}
 
-
         </div>
     );
 };

@@ -36,10 +36,10 @@ const getAllMovies = createAsyncThunk(
     'movies/getAllMovies',
     async ({page, genreId}: { page: string, genreId?: string }, thunkAPI) => {
         try {
-            const response = await moviesApiService.getAllMovies(page, genreId);
+            const response = await moviesApiService.getAllMovies(page, genreId)
             return thunkAPI.fulfillWithValue(response)
         } catch (e) {
-            const error = e as AxiosError;
+            const error = e as AxiosError
             return thunkAPI.rejectWithValue(error)
         }
     })
@@ -48,10 +48,10 @@ const getMovieDetails = createAsyncThunk(
     'movies/getMovieDetails',
     async (movieId: string, thunkAPI) => {
         try {
-            const response = await moviesApiService.getSingleMovieDetails(movieId);
+            const response = await moviesApiService.getSingleMovieDetails(movieId)
             return thunkAPI.fulfillWithValue(response)
         } catch (e) {
-            const error = e as AxiosError;
+            const error = e as AxiosError
             return thunkAPI.rejectWithValue(error)
         }
     }
@@ -61,11 +61,11 @@ const searchMovies = createAsyncThunk(
     'movies/searchMovies',
     async ({query, page}: { query: string, page: string }, thunkAPI) => {
         try {
-            const response = await moviesApiService.searchMovies(query, page);
-            return thunkAPI.fulfillWithValue(response);
+            const response = await moviesApiService.searchMovies(query, page)
+            return thunkAPI.fulfillWithValue(response)
         } catch (e) {
-            const error = e as AxiosError;
-            return thunkAPI.rejectWithValue(error);
+            const error = e as AxiosError
+            return thunkAPI.rejectWithValue(error)
         }
     }
 );
@@ -74,11 +74,11 @@ const getGenres = createAsyncThunk(
     'movies/getGenres',
     async (_, thunkAPI) => {
         try {
-            const response = await moviesApiService.getGenres();
-            return thunkAPI.fulfillWithValue(response.genres);
+            const response = await moviesApiService.getGenres()
+            return thunkAPI.fulfillWithValue(response.genres)
         } catch (e) {
-            const error = e as AxiosError;
-            return thunkAPI.rejectWithValue(error);
+            const error = e as AxiosError
+            return thunkAPI.rejectWithValue(error)
         }
     }
 );
@@ -87,10 +87,10 @@ const getPopularMovies = createAsyncThunk(
     'movies/getPopularMovies',
     async (_, thunkAPI) => {
         try {
-            const response = await moviesApiService.getPopularMovies();
+            const response = await moviesApiService.getPopularMovies()
             return thunkAPI.fulfillWithValue(response.results)
         } catch (e) {
-            const error = e as AxiosError;
+            const error = e as AxiosError
             return thunkAPI.rejectWithValue(error)
         }
     }
@@ -100,11 +100,11 @@ export const getMovieVideos = createAsyncThunk(
     'movies/getMovieVideos',
     async (movieId: string, thunkAPI) => {
         try {
-            const response = await moviesApiService.getMovieVideos(movieId);
+            const response = await moviesApiService.getMovieVideos(movieId)
             return thunkAPI.fulfillWithValue(response)
 
         } catch (e) {
-            const error = e as AxiosError;
+            const error = e as AxiosError
             return thunkAPI.rejectWithValue(error)
         }
     }
@@ -139,57 +139,57 @@ const moviesSlice = createSlice({
                 state.selectedMovie = action.payload
             })
             .addCase(getMovieDetails.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message || 'Failed to show movie details';
+                state.status = 'failed'
+                state.error = action.error.message || 'Failed to show movie details'
             })
             //===========================================================================================================
             .addCase(searchMovies.pending, (state) => {
-                state.status = 'loading';
+                state.status = 'loading'
             })
             .addCase(searchMovies.fulfilled, (state, action: PayloadAction<IMoviesAxiosResponse>) => {
-                state.status = 'succeeded';
-                state.movies = action.payload.results;
-                state.totalPages = action.payload.total_pages;
-                state.error = null;
+                state.status = 'succeeded'
+                state.movies = action.payload.results
+                state.totalPages = action.payload.total_pages
+                state.error = null
             })
             .addCase(searchMovies.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message || 'Failed to search movies';
+                state.status = 'failed'
+                state.error = action.error.message || 'Failed to search movies'
             })
             //===========================================================================================================
             .addCase(getGenres.pending, (state) => {
-                state.genresStatus = 'loading';
+                state.genresStatus = 'loading'
             })
             .addCase(getGenres.fulfilled, (state, action: PayloadAction<IGenre[]>) => {
-                state.genresStatus = 'succeeded';
-                state.genres = action.payload;
-                state.error = null;
+                state.genresStatus = 'succeeded'
+                state.genres = action.payload
+                state.error = null
             })
             .addCase(getGenres.rejected, (state, action) => {
-                state.genresStatus = 'failed';
-                state.error = action.error.message || 'Failed to fetch genres';
+                state.genresStatus = 'failed'
+                state.error = action.error.message || 'Failed to fetch genres'
             })
             //===========================================================================================================
             .addCase(getPopularMovies.pending, (state) => {
-                state.status = 'loading';
+                state.status = 'loading'
             })
             .addCase(getPopularMovies.fulfilled, (state, action) => {
-                state.status = 'succeeded';
-                state.movies = action.payload;
+                state.status = 'succeeded'
+                state.movies = action.payload
             })
             .addCase(getPopularMovies.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message || 'Failed to fetch popular movies';
+                state.status = 'failed'
+                state.error = action.error.message || 'Failed to fetch popular movies'
             })
             //===========================================================================================================
             .addCase(getMovieVideos.fulfilled, (state, action) => {
-                state.videos = action.payload;
+                state.videos = action.payload
             })
             .addCase(getMovieVideos.pending, (state) => {
-                state.status = 'loading';
+                state.status = 'loading'
             })
             .addCase(getMovieVideos.rejected, (state) => {
-                state.status = 'failed';
+                state.status = 'failed'
             })
 })
 

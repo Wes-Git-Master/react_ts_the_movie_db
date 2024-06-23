@@ -10,6 +10,9 @@ interface IThemeContextType {
 const ThemeContext = createContext<IThemeContextType | undefined>(undefined);
 
 const useTheme = (): IThemeContextType => {
+
+    //===========================================================================================================
+
     const context = useContext(ThemeContext);
     if (!context) {
         throw new Error('useTheme must be used within a ThemeProvider');

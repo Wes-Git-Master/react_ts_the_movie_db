@@ -3,6 +3,7 @@ import {IGenre} from "../../../interfaces/IGenre";
 import css from "../../../styles/genre.of.movie.module.css"
 import {NavLink} from "react-router-dom";
 
+
 interface IProps {
     genre: IGenre
 }

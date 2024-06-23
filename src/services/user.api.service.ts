@@ -9,9 +9,9 @@ const axiosInstance = axios.create({
 
 const userService = {
     getUserInfo: async (sessionId: string | null): Promise<IUser> => {
-        const response = await axiosInstance.get<IUser>(`${baseURL}/account?api_key=${apiKEY}&session_id=${sessionId}`);
-        return response.data;
+        const response = await axiosInstance.get<IUser>(`${baseURL}/account?api_key=${apiKEY}&session_id=${sessionId}`)
+        return response.data
     }
-};
+}
 
-export default userService;
+export default userService
