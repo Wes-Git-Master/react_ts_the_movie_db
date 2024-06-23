@@ -56,7 +56,7 @@ const MovieInfoComponent: FC = () => {
 
                 <div className={css.poster_info_container}>
                     <div className={css.poster_Block}>
-                        <h1>{movie.title}</h1>
+                        <h3>- {movie.title} -</h3>
                         <img src={`${posterBaseURL + movie.poster_path}`} alt={movie.title}/>
                     </div>
                     <div className={css.movie_Info_Container_right}>
