@@ -75,7 +75,7 @@ const MoviesListComponent = () => {
 
             <div className={css.pagination_block}>
                 {status !== 'loading' && totalPages > 0 && movies.length !== 0 && (
-                    <PaginationPageNumbersComponent currentPage={page} totalPages={totalPages}/>
+                    <PaginationPageNumbersComponent currentPage={page} totalPages={totalPages} pagesPerGroup={10}/>
                 )}
             </div>
             <ScrollToTopButton threshold={1207} scrollOnMount={true} top={0}/>

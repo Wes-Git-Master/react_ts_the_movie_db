@@ -7,7 +7,7 @@ import {useLoading} from "../../../hooks/useLoading";
 import {BeatLoader} from "react-spinners";
 import css from "../../../styles/movie.info.module.css"
 import css_common from "../../../styles/css_common/button.module.css"
-import {GenresOfMovie} from "./GenresOfMovie";
+import {GenresOfMovie} from "../genres/GenresOfMovie";
 import {ScrollToTopButton} from "../../buttons/ScrollToTopButton";
 import {Button} from "../../buttons/Button";
 import ReactPlayer from "react-player";
@@ -63,7 +63,7 @@ const MovieInfoComponent: FC = () => {
 
                         <div className={css.genres_of_movie_block}>
                             <h3>Genres</h3>
-                            <span>-</span>
+                            <span>*</span>
                             {movie.genres?.map(genre => <GenresOfMovie genre={genre} key={genre.id}/>)}
                         </div>
 

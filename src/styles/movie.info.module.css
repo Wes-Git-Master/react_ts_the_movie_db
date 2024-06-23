@@ -32,7 +32,7 @@
 }
 
 .poster_Block h3 {
-    color: #e71c1c;
+    color: #d51c1c;
     font-size: 25px;
 }
 
@@ -58,12 +58,13 @@
 .genres_of_movie_block h3 {
     margin: 0;
     font-size: 26px;
-    color: #d91717;
+    color: rgba(211, 19, 19, 0.93);
 }
 
 .genres_of_movie_block span {
     margin-left: 28px;
-    color: rgba(217, 217, 217, 0.54);
+    color: rgba(217, 217, 217, 0.4);
+
 }
 
 /**********************************/

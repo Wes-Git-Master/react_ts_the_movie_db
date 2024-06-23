@@ -3,17 +3,17 @@ import {useSearchParams} from 'react-router-dom';
 import css from "../../styles/pagination.page.numbers.module.css"
 
 interface PaginationProps {
-    currentPage: string;
-    totalPages: number;
+    currentPage: string,
+    totalPages: number,
+    pagesPerGroup: number
 }
 
-const PaginationPageNumbersComponent: FC<PaginationProps> = ({currentPage, totalPages}) => {
+const PaginationPageNumbersComponent: FC<PaginationProps> = ({currentPage, totalPages, pagesPerGroup}) => {
 
     //===========================================================================================================
 
     const [searchParams, setSearchParams] = useSearchParams();
     const currentPageNumber = parseInt(currentPage);
-    const pagesPerGroup = 10;
     const currentGroup = Math.ceil(currentPageNumber / pagesPerGroup);
 
     const handlePageChange = (page: number) => {
