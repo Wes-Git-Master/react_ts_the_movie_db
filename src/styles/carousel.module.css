@@ -1,0 +1,51 @@
+.carouselContainer {
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+}
+
+.carouselItem {
+    flex: 0 0 auto;
+    margin: 0 8px 0 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.scrollButton {
+    background-color: rgba(13, 66, 122, 0.82);
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 55%;
+    transition: background-color 0.2s;
+    position: absolute;
+    top: 44%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.scrollButton:disabled {
+    background-color: rgba(37, 37, 37, 0.85);
+}
+
+.scrollButton:active {
+    color: #000000;
+}
+
+.scrollButton:hover:not(:disabled) {
+
+    background-color: rgba(9, 120, 231, 0.92);
+    transition: 0.3s;
+}
+
+.scrollButton:first-of-type {
+    left: -90px;
+}
+
+.scrollButton:last-of-type {
+    right: -82px;
+}

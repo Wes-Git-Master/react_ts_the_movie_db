@@ -1,10 +1,10 @@
 .movieCard {
-    width: 150px;
+    width: 143px;
     border: 1px solid #ddd;
     border-radius: 5px;
     overflow: hidden;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .movieCard img {
@@ -13,5 +13,18 @@
 }
 
 .movieDetails {
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.movieDetails p {
+    color: #b9b9b9;
+    margin: 20px 0 3px 0;
+    font-size: 20px;
+}
+
+.movieDetails h2 {
+    color: rgba(255, 0, 0, 0.84);
+    margin: 3px 0 20px 0;
 }

@@ -5,6 +5,8 @@ import css_common from "../../styles/css_common/button.module.css";
 import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks/redux.type.hooks";
 import {moviesActions} from "../../redux/slices/moviesSlice";
 import {MovieCardComponent} from "../movies/movie_card/MovieCardComponent";
+import {CarouselComponent} from "../carousel/CarouselComponent";
+import {IMovie} from "../../interfaces/IMovie";
 
 const HomeComponent = () => {
 
@@ -37,10 +39,12 @@ const HomeComponent = () => {
             </button>
             <h2 className={css.popularMoviesHeading}>Popular Movies</h2>
             <div className={css.popularMovies}>
-                {status === 'loading'
-                    ? (<p>Loading...</p>)
-                    : (movies.slice(0, 10).map(movie => (<MovieCardComponent key={movie.id} movie={movie}/>)))
-                }
+                <CarouselComponent<IMovie>
+                    array={movies.slice(0, 20)}
+                    status={status}
+                    visibleCount={8}
+                    renderItem={(movie: IMovie) => <MovieCardComponent movie={movie}/>}
+                />
             </div>
         </div>
     );

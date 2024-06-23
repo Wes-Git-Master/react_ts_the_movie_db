@@ -7,7 +7,7 @@ import {GenresDropdownComponent} from "../genres/GenresDropdownComponent";
 import {BeatLoader} from "react-spinners";
 import {MoviesListCardComponent} from "./MoviesListCardComponent";
 import {PaginationPageNumbersComponent} from "../../paginations/PaginationPageNumbersComponent";
-import {MovieSearchComponent} from "../../search/MovieSearchComponent";
+import {MovieSearchComponent} from "../search/MovieSearchComponent";
 import css from "../../../styles/movies.list.module.css";
 import css_common from "../../../styles/css_common/button.module.css"
 import {ScrollToTopButton} from "../../buttons/ScrollToTopButton";

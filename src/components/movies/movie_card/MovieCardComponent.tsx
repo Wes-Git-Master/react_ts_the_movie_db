@@ -16,8 +16,8 @@ const MovieCardComponent: FC<IProps> = ({movie}) => {
         <div className={css.movieCard}>
             <img src={`${posterBaseURL}${movie.poster_path}`} alt={movie.title}/>
             <div className={css.movieDetails}>
-                <h3>{movie.title}</h3>
-                <p>Rating: {movie.vote_average}</p>
+                <p>Rating</p>
+                <h2>{movie.vote_average}</h2>
             </div>
         </div>
     );

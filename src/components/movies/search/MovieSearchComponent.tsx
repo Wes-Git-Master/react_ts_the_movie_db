@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
-import css from "../../styles/movie.search.module.css"
-import css_common from "../../styles/css_common/button.module.css"
+import css from "../../../styles/movie.search.module.css"
+import css_common from "../../../styles/css_common/button.module.css"
 
 
 interface IProps {
