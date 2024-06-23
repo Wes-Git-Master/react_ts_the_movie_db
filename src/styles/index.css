@@ -7,12 +7,12 @@ body {
 }
 
 body.dark {
-    background-color: #3a4a7c;
-    color: #000000;
+    background-color: rgba(0, 0, 0, 0.91);
+    color: #ffffff;
 }
 
 body.light {
-    background-color: rgba(0, 0, 0, 0.91);
-    color: #ffffff;
+    background-color: #3a4a7c;
+    color: #000000;
 }
 

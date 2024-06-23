@@ -62,15 +62,17 @@ const MovieInfoComponent: FC = () => {
                     <div className={css.movie_Info_Container_right}>
 
                         <div className={css.genres_of_movie_block}>
-                            Genres: {movie.genres?.map(genre => <GenresOfMovie genre={genre} key={genre.id}/>)}
+                            <h3>Genres</h3>
+                            <span>-</span>
+                            {movie.genres?.map(genre => <GenresOfMovie genre={genre} key={genre.id}/>)}
                         </div>
 
                         <div className={css.movie_info_block}>
-                            <p>Release Date | {movie.release_date}</p>
-                            <p>Rating | {movie.vote_average}</p>
-                            <p>Vote count | {movie.vote_count}</p>
-                            <p>Original Language |  {movie.original_language}</p>
-                            <p>Popularity | {movie.popularity}</p>
+                            <div><p>Release Date</p><span>|</span><p>{movie.release_date}</p></div>
+                            <div><p>Rating</p><span>|</span><p>{movie.vote_average}</p></div>
+                            <div><p>Vote count</p><span>|</span><p>{movie.vote_count}</p></div>
+                            <div><p>Original Language</p><span>|</span><p>{movie.original_language}</p></div>
+                            <div><p>Popularity</p><span>|</span><p>{movie.popularity}</p></div>
                         </div>
 
                     </div>

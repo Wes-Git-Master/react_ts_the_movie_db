@@ -49,18 +49,50 @@
     margin: 125px 0 0 78px;
 }
 
+/***********************************/
+
 .genres_of_movie_block {
     display: flex;
-    font-size: 25px;
+    align-items: baseline;
 }
+
+.genres_of_movie_block h3 {
+    margin: 0;
+    font-size: 26px;
+    color: #d91717;
+}
+
+.genres_of_movie_block span {
+    margin-left: 28px;
+    color: rgba(217, 217, 217, 0.54);
+}
+
+/**********************************/
 
 .movie_info_block {
     margin: 25px 0 0 0;
 }
 
-.movie_info_block p {
-    /*color: #967070;*/
+.movie_info_block div {
+    display: flex;
+    align-items: baseline;
+}
+
+.movie_info_block div p {
+    color: #c3cee7;
     font-size: 22px;
+    margin: 20px 0 0 0;
+}
+
+.movie_info_block div span {
+    color: rgba(255, 255, 255, 0.47);
+    margin-left: 8px;
+}
+
+.movie_info_block div p:nth-child(3) {
+    font-size: 18px;
+    color: #bd8d24;
+    margin-left: 10px;
 }
 
 /******************************/
