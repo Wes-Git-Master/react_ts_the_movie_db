@@ -37,13 +37,10 @@ const HomeComponent = () => {
             </button>
             <h2 className={css.popularMoviesHeading}>Popular Movies</h2>
             <div className={css.popularMovies}>
-                {status === 'loading' ? (
-                    <p>Loading...</p>
-                ) : (
-                    movies.slice(0, 10).map(movie => (
-                        <MovieCardComponent key={movie.id} movie={movie}/>
-                    ))
-                )}
+                {status === 'loading'
+                    ? (<p>Loading...</p>)
+                    : (movies.slice(0, 10).map(movie => (<MovieCardComponent key={movie.id} movie={movie}/>)))
+                }
             </div>
         </div>
     );
