@@ -10,7 +10,7 @@ const ThemeProvider: FC<IProps> = ({children}) => {
 
     //===========================================================================================================
 
-    const savedTheme = sessionStorage.getItem('theme') as Theme || 'light'
+    const savedTheme = sessionStorage.getItem('theme') as Theme || 'dark'
     const [theme, setTheme] = useState<Theme>(savedTheme);
 
     const toggleTheme = () => {
