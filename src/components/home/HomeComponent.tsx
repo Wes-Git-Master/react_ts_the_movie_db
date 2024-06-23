@@ -8,7 +8,6 @@ import {MovieCardComponent} from "../movies/movie_card/MovieCardComponent";
 
 const HomeComponent = () => {
 
-
     //===========================================================================================================
 
     const dispatch = useAppDispatch();
