@@ -11,6 +11,8 @@ import {GenresOfMovie} from "./GenresOfMovie";
 import {ScrollToTopButton} from "../../buttons/ScrollToTopButton";
 import {Button} from "../../buttons/Button";
 import ReactPlayer from "react-player";
+import {Simulate} from "react-dom/test-utils";
+import playing = Simulate.playing;
 
 
 const MovieInfoComponent: FC = () => {
@@ -44,6 +46,7 @@ const MovieInfoComponent: FC = () => {
     }
 
     const trailer = videos?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+    const movieClip = videos?.find(video => video.type === 'Clip' && video.site === 'YouTube');
 
     //===========================================================================================================
 
@@ -83,6 +86,12 @@ const MovieInfoComponent: FC = () => {
                 {trailer && (
                     <div className={css.video_block}>
                         <ReactPlayer url={`https://www.youtube.com/watch?v=${trailer.key}`} controls height={400}
+                                     width={800}/>
+                    </div>
+                )}
+                {movieClip && (
+                    <div className={css.video_block}>
+                        <ReactPlayer url={`https://www.youtube.com/watch?v=${movieClip.key}`} controls height={400}
                                      width={800}/>
                     </div>
                 )}
