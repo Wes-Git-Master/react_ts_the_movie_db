@@ -21,31 +21,31 @@ const moviesApiService = {
 
     getAllMovies: async (page: string, genreId?: string): Promise<IMoviesAxiosResponse> => {
         const response
-            = await axiosInstance.get<IMoviesAxiosResponse>(`${baseURL}/discover/movie`, {
+            = await axiosInstance.get<IMoviesAxiosResponse>(`/discover/movie`, {
             params: {page, with_genres: genreId}
         })
         return response.data
     },
     getSingleMovieDetails: async (movieId: string): Promise<IMovie> => {
         const response
-            = await axiosInstance.get<IMovie>(`${baseURL}/movie/${movieId}`)
+            = await axiosInstance.get<IMovie>(`/movie/${movieId}`)
         return response.data
     },
     searchMovies: async (query: string, page: string): Promise<IMoviesAxiosResponse> => {
         const response
-            = await axiosInstance.get<IMoviesAxiosResponse>(`${baseURL}/search/movie`, {
+            = await axiosInstance.get<IMoviesAxiosResponse>(`/search/movie`, {
             params: {query, page}
         })
         return response.data
     },
     getGenres: async (): Promise<IGenresAxiosResponse> => {
         const response
-            = await axiosInstance.get<IGenresAxiosResponse>(`${baseURL}/genre/movie/list`)
+            = await axiosInstance.get<IGenresAxiosResponse>(`/genre/movie/list`)
         return response.data
     },
     getPopularMovies: async (): Promise<IMoviesAxiosResponse> => {
         const response
-            = await axiosInstance.get<IMoviesAxiosResponse>(`${baseURL}/movie/popular?api_key=${apiKEY}`)
+            = await axiosInstance.get<IMoviesAxiosResponse>(`/movie/popular?api_key=${apiKEY}`)
         return response.data
     },
     getMovieVideos: async (movieId: string): Promise<IVideo[]> => {

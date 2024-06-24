@@ -39,7 +39,7 @@ const AuthenticatedComponent: FC = () => {
         if (status === 'failed') {
             navigate('/login')
         }
-    }, [status, navigate,sessionId]);
+    }, [status, navigate, sessionId]);
 
     //===========================================================================================================
 

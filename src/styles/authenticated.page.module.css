@@ -1,7 +1,11 @@
-.authenticated_page{
+.authenticated_page {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.authenticated_page div {
+    margin-left: 55px;
 }
 
 .authenticated_page p {
@@ -11,6 +15,5 @@
 
 .authenticated_page a {
     text-decoration: none;
-    margin-top: 10px;
     font-size: 35px;
 }

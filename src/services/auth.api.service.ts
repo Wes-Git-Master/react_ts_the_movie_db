@@ -15,11 +15,11 @@ const authApiService = {
 
     getToken: async (): Promise<IRequestToken> => {
         const response
-            = await axiosInstance.get<IRequestToken>(`${baseURL}/authentication/token/new?api_key=${apiKEY}`)
+            = await axiosInstance.get<IRequestToken>(`/authentication/token/new?api_key=${apiKEY}`)
         return response.data
     },
     createNewSession: async (requestToken: string): Promise<ISessionId> => {
-        const response = await axiosInstance.post(`${baseURL}/authentication/session/new?api_key=${apiKEY}`, {request_token: requestToken})
+        const response = await axiosInstance.post(`/authentication/session/new?api_key=${apiKEY}`, {request_token: requestToken})
         return response.data
     }
 }
