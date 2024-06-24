@@ -16,7 +16,6 @@
     "typescript": "^4.9.5",
     "axios": "^1.6.8",
     "react-hook-form": "^7.51.4",
-    "joi": "^17.13.1" ,
     "@hookform/resolvers": "^3.3.4",
     "react-router-dom": "^6.23.1",
     "redux": "^5.0.1",
