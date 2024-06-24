@@ -6,7 +6,7 @@ import {store} from "./redux/Store";
 import {useTheme} from "./hooks/useTheme";
 import {useEffect} from "react";
 import {ThemeProvider} from "./context/ThemeContext";
-import './styles/index/index.css';
+import './styles/global_css/index.css';
 
 
 const Root = () => {
