@@ -1,0 +1,23 @@
+.genre {
+    /*display: inline-flex;*/
+}
+
+.genreLink {
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px 18px;
+    height: 17px;
+    padding: 10px;
+    font-size: 21px;
+    border-radius: 12px;
+    border: 1px #2473c2 solid;
+    background-color: rgba(197, 199, 189, 0.91);
+    color: #000000;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.genreLink:hover {
+    background-color: rgba(255, 255, 255, 0.09);
+    color: rgba(255, 255, 255, 0.63);
+}

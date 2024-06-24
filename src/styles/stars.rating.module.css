@@ -1,0 +1,24 @@
+.starFilled {
+    color: gold;
+    height: 15px;
+}
+
+.starEmpty {
+    color: lightgray;
+    height: 15px;
+}
+
+.rating_low {
+    color: red;
+    height: 15px;
+}
+
+.rating_medium {
+    color: orange;
+    height: 15px;
+}
+
+.rating_high {
+    color: green;
+    height: 15px;
+}
