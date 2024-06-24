@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react';
 import css from '../../styles/carousel.module.css';
 
 interface CarouselComponentProps<T> {
-    array: T[];
-    status?: string;
-    visibleCount: number;
-    renderItem: (type: T) => React.ReactNode;
+    array: T[],
+    status?: string,
+    visibleCount: number,
+    renderItem: (type: T) => React.ReactNode
 }
 
 const CarouselComponent = <T, >({array, status, visibleCount, renderItem}: CarouselComponentProps<T>) => {
@@ -16,33 +16,35 @@ const CarouselComponent = <T, >({array, status, visibleCount, renderItem}: Carou
 
     useEffect(() => {
         if (array.length > 0 && currentIndex >= array.length) {
-            setCurrentIndex(0);
+            setCurrentIndex(0)
         }
     }, [array, currentIndex]);
 
     const handleNext = () => {
         if (currentIndex < array.length - visibleCount) {
-            setCurrentIndex(prevIndex => prevIndex + 1);
+            setCurrentIndex(prevIndex => prevIndex + 1)
         }
     };
 
     const handlePrevious = () => {
         if (currentIndex > 0) {
-            setCurrentIndex(prevIndex => prevIndex - 1);
+            setCurrentIndex(prevIndex => prevIndex - 1)
         }
     };
 
     const handleWheel = (event: React.WheelEvent<HTMLDivElement>) => {
         if (event.deltaY > 1) {
-            handleNext();
+            handleNext()
         } else {
-            handlePrevious();
+            handlePrevious()
         }
     };
 
     if (status === 'loading') {
-        return <p>Loading...</p>;
+        return <p>Loading...</p>
     }
+
+    //===========================================================================================================
 
     return (
         <div className={css.carouselContainer} onWheel={handleWheel}>
